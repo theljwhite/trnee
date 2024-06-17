@@ -4,7 +4,10 @@ import Navbar from "../components/UI/Navbar";
 import Sidebar from "../components/UI/Sidebar";
 import HomeHero from "../components/UI/HomeHero";
 import TournamentsLayout from "../layouts/TournamentsLayout";
+import TournamentLayout from "../layouts/TournamentLayout";
 import TournamentList from "../components/Tournaments/TournamentList";
+import GameTourneyList from "../components/tournaments/GameTourneyList";
+import Tournament from "../components/tournament/Tournament";
 
 export default function ApplicationViews() {
   const [currentUser, setCurrentUser] = useState({});
@@ -19,7 +22,6 @@ export default function ApplicationViews() {
     <>
       <Routes>
         <Route
-          // path="/"
           element={
             <main className="my-12 lg:mt-16 lg:ml-16 flex-1 block">
               <div className="flex min-h-screen flex-col">
@@ -45,7 +47,11 @@ export default function ApplicationViews() {
 
           <Route path="tournaments" element={<TournamentsLayout />}>
             <Route index element={<TournamentList />} />
-            <Route path=":game" element={<span>GAME</span>} />
+            <Route path=":game" element={<GameTourneyList />} />
+          </Route>
+
+          <Route path="trnee" element={<TournamentLayout />}>
+            <Route path=":tourneyId" element={<Tournament />} />
           </Route>
         </Route>
       </Routes>

@@ -5,7 +5,7 @@ import { SPACE_BETWEEN_CAPITALS_REPLACE } from "../../constants/regularExpressio
 export default function SmallTourneyCard({ tournament }) {
   const game = gamesRecord[tournament.game.toLowerCase()];
   return (
-    <Link to={`/tournaments/${tournament.id}`}>
+    <Link to={`/trnee/${tournament.id}`}>
       <div className="relative shadow-xl border border-white border-opacity-10 rounded-lg">
         <img
           className="w-full h-40 bg-gray-900 rounded-lg object-cover"

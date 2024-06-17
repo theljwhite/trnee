@@ -15,8 +15,8 @@ export default function GameDescriptorCard({ selectedGame }) {
     >
       <div className="flex items-center space-x-4">
         <img className="w-10 h-10 rounded-lg object-cover" src={game.icon} />
-        <h1 className="text-white text-lg lg:text-3xl leading-8 lg:leading-9 font-bold">
-          Quake
+        <h1 className="text-white capitalize text-lg lg:text-3xl leading-8 lg:leading-9 font-bold">
+          {selectedGame}
         </h1>
       </div>
       <p className="mt-3 opacity-80 text-sm lg:text-base text-white">

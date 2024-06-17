@@ -5,13 +5,16 @@ import { gameItems } from "../../constants/gameConstants";
 export default function Sidebar() {
   return (
     <div className="hidden text-center lg:block fixed bottom-0 top-0 left-0 w-16 bg-zinc-800/60 z-50 shadow">
-      <a className="block w-16 h-16 text-white bg-indigo-600 flex items-center justify-center font-bold text-3xl">
+      <Link
+        to="/"
+        className="block w-16 h-16 text-white bg-indigo-600 flex items-center justify-center font-bold text-3xl"
+      >
         T
-      </a>
+      </Link>
       {gameItems.map((item, index) => {
         return (
           <Link
-            to={`/tournaments?game=${item.name.toLowerCase()}`}
+            to={`/tournaments/${item.name.toLowerCase()}`}
             key={index}
             className="w-full cursor-pointer h-16 flex items-center justify-center hover:bg-zinc-700 transition ease-in-out duration-200"
           >

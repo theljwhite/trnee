@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { api } from "../../utils/api";
-import GameDescriptorCard from "../UI/GameDescriptorCard";
 import TourneyCard from "./TourneyCard";
 import SmallTourneyCard from "./SmallTourneyCard";
 import MediumTourneyCard from "./MediumTourneyCard";
@@ -32,7 +31,6 @@ export default function TournamentList() {
 
   return (
     <>
-      {/* <GameDescriptorCard selectedGame="quake" /> */}
       <TourneySort
         tournaments={tournaments}
         setFilteredTournies={setFilteredTournies}

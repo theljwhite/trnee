@@ -37,6 +37,9 @@ export const gameItems = [
 ];
 
 export const allGameNames = gameItems.map((game) => game.name);
+export const allGameNamesLowercase = gameItems.map((game) =>
+  game.name.toLowerCase()
+);
 export const tourneyStatuses = ["Pending", "Ongoing", "Complete"];
 
 export const gamesRecord = {
@@ -53,6 +56,11 @@ export const gamesRecord = {
       "https://i.pinimg.com/736x/de/36/bb/de36bb06b74775893f4ef57232ca2d97.jpg",
     description:
       "Diabotical is a 2020 multiplayer-only first-person shooter developed by Swedish team GD Studio. It is in the arena FPS genre and features gameplay similar to Quake III Arena and its successors, with a variety of game modes, weapons, and complex movement mechanics. Diabotical uses an engine written from scratch.",
+    socials: {
+      website: "https://www.diabotical.com/",
+      twitter: "https://twitter.com/diabotical",
+      reddit: "https://www.reddit.com/r/Diabotical/",
+    },
   },
   quake: {
     icon: "https://i.imgur.com/Y8kmd9l.jpeg",

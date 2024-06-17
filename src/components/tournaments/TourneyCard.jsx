@@ -6,7 +6,7 @@ import { gamesRecord } from "../../constants/gameConstants";
 export default function TourneyCard({ tournament }) {
   const game = gamesRecord[tournament.game.toLowerCase()];
   return (
-    <Link to={`/tournaments/${tournament.id}`}>
+    <Link to={`/trnee/${tournament.id}`}>
       <div
         className={`flex flex-col h-40 lg:h-56 p-4 lg:p-6 text-white rounded-lg shadow text-left`}
         style={{
