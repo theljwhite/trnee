@@ -8,6 +8,7 @@ import {
 import { generateMatches } from "../../utils/bracketLogic";
 import TournamentHeader from "./TournamentHeader";
 import Bracket from "./Bracket";
+import { TourneyBracketIconOne } from "../UI/Icons";
 
 export default function Tournament() {
   const [tournament, setTournament] = useState({});
@@ -53,7 +54,22 @@ export default function Tournament() {
   return (
     <>
       <TournamentHeader tournament={tournament} />
-      <Bracket tournament={tournament} lines={lines} rounds={rounds} />
+      {participants.length < 2 ? (
+        <div className="hover:scale-105 hover:opacity-90 flex cursor-pointer flex-col items-center justify-center bg-zinc-800 p-4 rounded-lg shadow">
+          <div className="text-4xl text-indigo-500">
+            <TourneyBracketIconOne color="#FFF" size={100} />
+          </div>
+          <span className="text-2xl font-semibold mt-2 text-white">
+            Waiting for more participants...
+          </span>
+          <div className="text-lg text-center mt-2 text-white">
+            Bracket preview will be displayed when at least 2 participants are
+            registered for this trnee.
+          </div>
+        </div>
+      ) : (
+        <Bracket tournament={tournament} lines={lines} rounds={rounds} />
+      )}
     </>
   );
 }

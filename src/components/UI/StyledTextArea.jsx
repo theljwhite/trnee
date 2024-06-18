@@ -1,9 +1,10 @@
-export default function StyledInput({
+export default function StyledTextArea({
   stateVar,
   onChange,
   icon,
   placeholder,
   isDark,
+  height,
 }) {
   const inputBg = isDark ? "bg-zinc-800" : "bg-zinc-900";
   const inputBorder = isDark ? "border-zinc-700" : "border-zinc-800";
@@ -11,14 +12,16 @@ export default function StyledInput({
   return (
     <div className="relative">
       <div
-        className={`flex w-full ${inputBorder} overflow-hidden rounded-lg border-2`}
+        className={`flex w-full ${inputBorder} ${inputBg} overflow-hidden rounded-lg border-2`}
       >
         <div
-          className={`${inputBg} my-auto border-none w-12 py-1.5 text-center text-[1.125rem] leading-7`}
+          className={`${inputBg} ${
+            height && `h-${height}`
+          } my-auto mt-[0px] w-12 py-1.5 text-center text-lg`}
         >
           <span className="align-[-0.125em] inline-block">{icon}</span>
         </div>
-        <input
+        <textarea
           placeholder={placeholder}
           className={`${inputBg} block w-full pt-2 pb-2 pr-2 text-white`}
           value={stateVar}

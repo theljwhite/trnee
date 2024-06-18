@@ -8,6 +8,7 @@ import TournamentLayout from "../layouts/TournamentLayout";
 import TournamentList from "../components/Tournaments/TournamentList";
 import GameTourneyList from "../components/tournaments/GameTourneyList";
 import Tournament from "../components/tournament/Tournament";
+import CreateStepper from "../components/create-tournament/CreateStepper";
 
 export default function ApplicationViews() {
   const [currentUser, setCurrentUser] = useState({});
@@ -43,7 +44,9 @@ export default function ApplicationViews() {
               </>
             }
           />
-          <Route path="/create" element={<span>CREATE TOURNEY</span>} />
+          <Route path="/create" element={<TournamentsLayout />}>
+            <Route index element={<CreateStepper />} />
+          </Route>
 
           <Route path="tournaments" element={<TournamentsLayout />}>
             <Route index element={<TournamentList />} />

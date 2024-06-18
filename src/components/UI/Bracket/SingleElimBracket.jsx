@@ -1,11 +1,12 @@
 export default function SingleElimBracket({ lines, rounds }) {
+  const lineStrokeColor = "#a5b4fc"; //#F0F0F0";
+  const matchSeedBg = "#787a80";
+  const matchBaseBg = "#58595e";
+  const matchIdColor = "#FFF";
+  const roundHeaderBgColor = "#3f3f46";
+
   return (
-    <svg
-      className="bracket-svg"
-      width="1253"
-      height="656"
-      viewBox="0 0 1253 656"
-    >
+    <svg id="bracket" width="1253" height="656" viewBox="0 0 1253 656">
       <g className="parent">
         <g>
           {lines.map((line, index) => {
@@ -19,10 +20,10 @@ export default function SingleElimBracket({ lines, rounds }) {
                 <path
                   d={line.path}
                   className="bracket-line"
-                  stroke="#F0F0F0"
+                  stroke={lineStrokeColor}
                   strokeWidth=" 2px"
                   fill="none"
-                ></path>
+                />
               </g>
             );
           })}
@@ -64,8 +65,8 @@ export default function SingleElimBracket({ lines, rounds }) {
                   width="24"
                   height="10"
                   textAnchor="middle"
-                  className="match--identifier text-xs"
-                  fill="#FFF"
+                  className="text-xs"
+                  fill={matchIdColor}
                 >
                   {index + 1}
                 </text>
@@ -86,8 +87,7 @@ export default function SingleElimBracket({ lines, rounds }) {
                   height="45"
                   rx="3"
                   ry="3"
-                  className="match--base-background"
-                  fill="#58595e"
+                  fill={matchBaseBg}
                 ></rect>
 
                 <g clipPath="url(#match-clippath-1)">
@@ -101,15 +101,8 @@ export default function SingleElimBracket({ lines, rounds }) {
                         <path></path>
                       </clipPath>
                     </defs>
-                    <path
-                      d="M 50 0 h 147 v 22 h -147 Z"
-                      className="match--player-background"
-                    ></path>
-                    <path
-                      d="M 26 0 h 24 v 22 h -24 Z"
-                      className="match--seed-background"
-                      fill="#787a80"
-                    ></path>
+                    <path d="M 50 0 h 147 v 22 h -147 Z" />
+                    <path d="M 26 0 h 24 v 22 h -24 Z" fill={matchSeedBg} />
                     <text
                       x="38"
                       y="14"
@@ -144,15 +137,8 @@ export default function SingleElimBracket({ lines, rounds }) {
                         <path></path>
                       </clipPath>
                     </defs>
-                    <path
-                      d="M 50 0 h 147 v 22 h -147 Z"
-                      className="match--player-background"
-                    ></path>
-                    <path
-                      d="M 26 0 h 24 v 22 h -24 Z"
-                      className="match--seed-background"
-                      fill="#787a80"
-                    ></path>
+                    <path d="M 50 0 h 147 v 22 h -147 Z" />
+                    <path d="M 26 0 h 24 v 22 h -24 Z" fill={matchSeedBg} />
                     <text
                       x="38"
                       y="14"
@@ -191,7 +177,7 @@ export default function SingleElimBracket({ lines, rounds }) {
         </g>
         <g className="rounds" transform="translate(0,0)">
           <svg className="round" x="0">
-            <g fill="#3f3f46" className="round-label">
+            <g fill={roundHeaderBgColor} className="round-label">
               <rect width="243" height="25"></rect>
               <text
                 fill="#FFF"
@@ -207,7 +193,7 @@ export default function SingleElimBracket({ lines, rounds }) {
             </g>
           </svg>
           <svg className="round" x="244">
-            <g fill="#3f3f46" className="round-label">
+            <g fill={roundHeaderBgColor} className="round-label">
               <rect width="243" height="25"></rect>
               <text
                 fill="#FFF"
@@ -223,7 +209,7 @@ export default function SingleElimBracket({ lines, rounds }) {
             </g>
           </svg>
           <svg className="round" x="488">
-            <g fill="#3f3f46" className="round-label">
+            <g fill={roundHeaderBgColor} className="round-label">
               <rect width="243" height="25"></rect>
               <text
                 fill="#FFF"
@@ -239,7 +225,7 @@ export default function SingleElimBracket({ lines, rounds }) {
             </g>
           </svg>
           <svg className="round" x="732">
-            <g fill="#3f3f46" className="round-label">
+            <g fill={roundHeaderBgColor} className="round-label">
               <rect width="243" height="25"></rect>
               <text
                 fill="#FFF"
