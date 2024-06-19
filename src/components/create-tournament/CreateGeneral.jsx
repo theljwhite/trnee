@@ -1,3 +1,4 @@
+import { useCreateTourneyContext } from "./CreateTourneyContext";
 import { allGameNames } from "../../constants/gameConstants";
 import StyledInput from "../UI/StyledInput";
 import StyledTextArea from "../UI/StyledTextArea";
@@ -5,6 +6,8 @@ import StyledSelect from "../UI/StyledSelect";
 import { GameControllerIcon, DescriptionIcon, LabelIcon } from "../UI/Icons";
 
 export default function CreateGeneral() {
+  const { state, dispatch } = useCreateTourneyContext();
+
   return (
     <div className="bg-zinc-900 rounded-lg p-5 shadow-lg min-w-[680px]">
       <div className="mb-4 pb-4 border-b border-zinc-800 text-2xl text-white font-bold">
@@ -16,8 +19,10 @@ export default function CreateGeneral() {
             Tournament Name
           </label>
           <StyledInput
-            stateVar="name"
-            onChange={() => console.log("changed")}
+            stateVar={state.name}
+            onChange={(e) =>
+              dispatch({ type: "name_update", payload: e.target.value })
+            }
             icon={<LabelIcon size={18} color="#FFF" />}
             placeholder="Tournament name"
             isDark
@@ -28,8 +33,10 @@ export default function CreateGeneral() {
             Description
           </label>
           <StyledTextArea
-            stateVar="description"
-            onChange={() => console.log("ta changed")}
+            stateVar={state.description}
+            onChange={(e) =>
+              dispatch({ type: "desc_update", payload: e.target.value })
+            }
             icon={<DescriptionIcon size={18} color="#FFF" />}
             placeholder="Enter brief tournament description"
             isDark

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
+import { CreateTourneyProvider } from "../components/create-tournament/CreateTourneyContext";
 import Navbar from "../components/UI/Navbar";
 import Sidebar from "../components/UI/Sidebar";
 import HomeHero from "../components/UI/HomeHero";
@@ -45,7 +46,14 @@ export default function ApplicationViews() {
             }
           />
           <Route path="/create" element={<TournamentsLayout />}>
-            <Route index element={<CreateStepper />} />
+            <Route
+              index
+              element={
+                <CreateTourneyProvider>
+                  <CreateStepper />
+                </CreateTourneyProvider>
+              }
+            />
           </Route>
 
           <Route path="tournaments" element={<TournamentsLayout />}>

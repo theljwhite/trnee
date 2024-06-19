@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import { FolderPerson, TourneyBracketIconOne, TwoGearsIcon } from "./Icons";
+import {
+  AddIconCircle,
+  FolderPerson,
+  TourneyBracketIconOne,
+  TwoGearsIcon,
+} from "./Icons";
 import { gameItems } from "../../constants/gameConstants";
 
 export default function Sidebar() {
@@ -39,6 +44,16 @@ export default function Sidebar() {
           </span>
         </span>
       </a>
+      <Link
+        to="/create"
+        className="w-full cursor-pointer h-16 flex items-center justify-center hover:bg-zinc-700 transition ease-in-out duration-200"
+      >
+        <span className="rounded-lg bg-gray-800 w-10 h-10 p-0.5 flex items-center justify-center">
+          <span className="text-white">
+            <AddIconCircle color="currentColor" size={24} />
+          </span>
+        </span>
+      </Link>
 
       <span className="mt-4 mb-1 text-xs text-center text-white tracking-tighter font-semibold uppercase text-center">
         Account
