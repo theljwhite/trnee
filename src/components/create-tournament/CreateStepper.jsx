@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCreateTourneyContext } from "./CreateTourneyContext";
 import {
   validateStep,
@@ -38,6 +39,8 @@ export default function CreateStepper() {
   const [currStep, setCurrStep] = useState(0);
   const [furthestStep, setFurthestStep] = useState(0);
 
+  const navigate = useNavigate();
+
   const handleStepClick = (index) => {
     if (index < currStep) {
       setCurrStep(index);
@@ -54,6 +57,7 @@ export default function CreateStepper() {
       // const errorMessage = validateStep(stepToValidate, state);
       // if (errorMessage) {
       //   setCurrStep(stepToValidate);
+      //   toastError(errorMessage);
       //   return;
       // }
 
@@ -73,7 +77,10 @@ export default function CreateStepper() {
         : null,
     });
 
-    if (newTourney) toastSuccess(`Created new TRNEE ${newTourney.name}`);
+    if (newTourney) {
+      toastSuccess(`Created new TRNEE ${newTourney.name}`);
+      navigate(`/trnee/${newTourney.id}`);
+    }
   };
 
   return (
@@ -104,7 +111,7 @@ export default function CreateStepper() {
             {currStep === creationSteps.length - 1 ? (
               <button
                 onClick={handleTourneySubmit}
-                className="flex text-white items-center text-left px-4 py-2 rounded-lg bg-indigo-600"
+                className="flex text-white items-center text-left px-4 py-2 rounded-lg bg-emerald-800"
               >
                 Create
               </button>

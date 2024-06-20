@@ -23,7 +23,7 @@ export default function StyledSelect({
         </div>
         <select
           onChange={onChange}
-          className={`py-2 pr-2 w-full block ${selectBg} text-white`}
+          className={`py-2 pr-2 w-full block ${selectBg} text-white outline-none`}
         >
           <option className="hidden" defaultValue={defaultValue}>
             {defaultValueTitle}

@@ -61,7 +61,7 @@ export default function CreateSettings() {
                   </span>
                 </div>
                 <DatePicker
-                  className="bg-zinc-800 cursor-pointer block w-full pt-2 pb-2 pr-2 text-white appearance-none"
+                  className="bg-zinc-800 outline-none cursor-pointer block w-full pt-2 pb-2 pr-2 text-white appearance-none"
                   selected={state.startTime}
                   onChange={(date) =>
                     dispatch({ type: "start_date_update", payload: date })

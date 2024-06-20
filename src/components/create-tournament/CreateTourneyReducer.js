@@ -9,6 +9,7 @@ export const createTourneyInitialState = {
   isTeamBased: null,
   participantsList: "",
   signupKey: null,
+  signupUrl: null,
 };
 
 export const createTourneyReducer = (state, action) => {
@@ -37,6 +38,9 @@ export const createTourneyReducer = (state, action) => {
         ...state,
         participantsList: action.payload,
       };
+    case "signup_details_update":
+      const { key, url } = action.payload;
+      return { ...state, signupKey: key, signupUrl: url };
     default:
       throw new Error();
   }

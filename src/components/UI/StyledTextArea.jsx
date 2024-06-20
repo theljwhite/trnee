@@ -26,7 +26,7 @@ export default function StyledTextArea({
           placeholder={placeholder}
           className={`${inputBg} ${
             height ? `h-${height}` : ""
-          } block w-full pt-2 pb-2 pr-2 text-white`}
+          } block w-full pt-2 pb-2 pr-2 text-white outline-none`}
           value={stateVar}
           onChange={onChange}
         />

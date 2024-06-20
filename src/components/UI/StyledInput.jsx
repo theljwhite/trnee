@@ -20,7 +20,7 @@ export default function StyledInput({
         </div>
         <input
           placeholder={placeholder}
-          className={`${inputBg} block w-full pt-2 pb-2 pr-2 text-white`}
+          className={`${inputBg} block w-full pt-2 pb-2 pr-2 text-white outline-none`}
           value={stateVar}
           onChange={onChange}
         />

@@ -370,3 +370,43 @@ export const SuccessCircleOne = ({ color, size }) => (
     />
   </svg>
 );
+
+export const ClipboardOne = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    fill={color}
+    stroke="#3f3f46"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+    <rect height="4" rx="1" ry="1" width="8" x="8" y="2" />
+  </svg>
+);
+
+export const EyeTransform = ({ color, size, line }) => (
+  <svg
+    width={size}
+    height={size}
+    fill={color}
+    viewBox="0 0 16 16"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {!line && <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />}
+    {line && (
+      <line
+        x1="10%"
+        y1="10%"
+        x2="90%"
+        y2="90%"
+        stroke={color}
+        strokeWidth={2}
+      />
+    )}
+    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+  </svg>
+);
