@@ -317,3 +317,56 @@ export const AddIconCircle = ({ color, size }) => (
     </g>
   </svg>
 );
+
+export const ErrorCircle = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    version="1.1"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnssketch="http://www.bohemiancoding.com/sketch/ns"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <title />
+    <desc />
+    <defs />
+    <g fill="none" fillRule="evenodd" id="Page-1" stroke="none" strokeWidth="1">
+      <g
+        fill={color ?? "currentColor"}
+        id="Core"
+        transform="translate(-2.000000, -212.000000)"
+      >
+        <g id="error" transform="translate(2.000000, 212.000000)">
+          <path
+            d="M10,0 C4.5,0 0,4.5 0,10 C0,15.5 4.5,20 10,20 C15.5,20 20,15.5 20,10 C20,4.5 15.5,0 10,0 L10,0 Z M11,15 L9,15 L9,13 L11,13 L11,15 L11,15 Z M11,11 L9,11 L9,5 L11,5 L11,11 L11,11 Z"
+            id="Shape"
+          />
+        </g>
+      </g>
+    </g>
+  </svg>
+);
+
+export const SuccessCircleOne = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    enableBackground="new 0 0 512 512"
+    id="Layer_1"
+    version="1.1"
+    viewBox="0 0 512 512"
+    xmlSpace="preserve"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <path
+      d="M256,6.998c-137.533,0-249,111.467-249,249c0,137.534,111.467,249,249,249s249-111.467,249-249  C505,118.464,393.533,6.998,256,6.998z M256,485.078c-126.309,0-229.08-102.771-229.08-229.081  c0-126.31,102.771-229.08,229.08-229.08c126.31,0,229.08,102.771,229.08,229.08C485.08,382.307,382.31,485.078,256,485.078z"
+      fill={color ?? "currentColor "}
+    />
+    <polygon
+      fill={color ?? "currentColor"}
+      points="384.235,158.192 216.919,325.518 127.862,236.481 113.72,250.624 216.919,353.803 398.28,172.334   "
+    />
+  </svg>
+);

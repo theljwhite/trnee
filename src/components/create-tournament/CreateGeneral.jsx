@@ -47,6 +47,9 @@ export default function CreateGeneral() {
             Game
           </label>
           <StyledSelect
+            onChange={(e) =>
+              dispatch({ type: "game_update", payload: e.target.value })
+            }
             defaultValue="Select a game"
             defaultValueTitle="Select a game for your tournament"
             options={["None", ...allGameNames]}

@@ -24,7 +24,7 @@ export default function Tournament() {
 
   const getAndSetTournament = async () => {
     const [tourney] = await api.tournaments.getTournamentById(tourneyId);
-    const participants = await api.tournaments.getTournamentParticipantsFull(
+    const participants = await api.tournaments.getTournamentParticipants(
       tourneyId
     );
     let matches = [];

@@ -1,7 +1,25 @@
-import { UsersIcon } from "../UI/Icons";
+import { useState } from "react";
+import { useCreateTourneyContext } from "./CreateTourneyContext";
+import { SEED_USER_ENTRY_REGEX } from "../../constants/regularExpressions";
 import StyledTextArea from "../UI/StyledTextArea";
+import { UsersIcon } from "../UI/Icons";
 
-export default function CreateParticipants({ hasCustomSignup }) {
+//TODO - signup key for custom signup
+//TODO - consider also the logic for manual team entry and team custom signup
+
+export default function CreateParticipants() {
+  const { state, dispatch } = useCreateTourneyContext();
+  const { participantsList, hasCustomSignup } = state;
+
+  const onParticipantEntryChange = (e) => {
+    const { value } = e.target;
+    dispatch({
+      type: "participant_list_update",
+      payload: value,
+    });
+    //TODO - validate correct entry format
+  };
+
   return (
     <div className="bg-zinc-900 rounded-lg p-5 shadow-lg min-w-[680px]">
       <div className="mb-4 pb-4 border-b border-zinc-800">
@@ -9,9 +27,17 @@ export default function CreateParticipants({ hasCustomSignup }) {
           {hasCustomSignup ? "Add participants" : "Participant settings"}
         </span>
         <p className="block text-sm font-medium text-zinc-400 mt-2 mb-1">
-          {hasCustomSignup
-            ? "Copy details below in order for users to join your tournament"
-            : "Provide a list of participants with their respective seeds for your tourmanet"}
+          {hasCustomSignup ? (
+            <span>hasCustomsignup</span>
+          ) : (
+            <span>
+              Manage participants for your tournament. Enter a list of
+              participants with their desired seed and their username or name.
+              Separate participants with a line break. Ex: "1 johny 2 davis 3
+              skimbo" One line would look like "1 johny" and the next line would
+              be "2 davis"
+            </span>
+          )}
         </p>
       </div>
 
@@ -23,14 +49,9 @@ export default function CreateParticipants({ hasCustomSignup }) {
             <label className="block text-sm font-medium text-zinc-400 mb-1">
               Enter a list of participants
             </label>
-            <span className="block text-sm font-normal text-zinc-400 my-1">
-              Separate participants and their seeds by commas. Ex: "1 johny, 2
-              jasmine, 3 bob"
-            </span>
-            {/* TODO make a date picker */}
             <StyledTextArea
-              stateVar=""
-              onChange={() => console.log("TODO")}
+              stateVar={participantsList}
+              onChange={(e) => onParticipantEntryChange(e)}
               placeholder="Enter a list of participants"
               icon={<UsersIcon size={18} color="#FFF" />}
               height="96"

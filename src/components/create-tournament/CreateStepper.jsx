@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { useCreateTourneyContext } from "./CreateTourneyContext";
-import { validateStep } from "../../utils/createTourneyValidation";
+import {
+  validateStep,
+  parseParticipantsList,
+} from "../../utils/createTourneyValidation";
+import { api } from "../../utils/api";
 import CreateGeneral from "./CreateGeneral";
 import CreateSettings from "./CreateSettings";
 import CreateParticipants from "./CreateParticipants";
 import { DescriptionIcon, TwoGearsIcon, UsersIcon } from "../UI/Icons";
+import { toastSuccess, toastError } from "../UI/Toast/Toast";
 
 //wrapped this component in a context w/ a reducer in case
 //that I decide to expand on this at a later date with more state,
@@ -44,17 +49,31 @@ export default function CreateStepper() {
       stepToValidate <= index;
       stepToValidate++
     ) {
-      const errorMessage = validateStep(stepToValidate, state);
-      if (errorMessage) {
-        setCurrStep(stepToValidate);
-        return;
-      }
+      //---TODO: when validation is done, uncomment this
+
+      // const errorMessage = validateStep(stepToValidate, state);
+      // if (errorMessage) {
+      //   setCurrStep(stepToValidate);
+      //   return;
+      // }
 
       setCurrStep(index);
       if (index > furthestStep) {
         setFurthestStep(index);
       }
     }
+  };
+
+  const handleTourneySubmit = async () => {
+    const newTourney = await api.tournaments.createTournament({
+      ...state,
+      creatorId: 3, //replace
+      participants: !state.hasCustomSignup
+        ? parseParticipantsList(state.participantsList)
+        : null,
+    });
+
+    if (newTourney) toastSuccess(`Created new TRNEE ${newTourney.name}`);
   };
 
   return (
@@ -83,7 +102,10 @@ export default function CreateStepper() {
             })}
             <div className="border-t border-zinc-700 my-2"></div>
             {currStep === creationSteps.length - 1 ? (
-              <button className="flex text-white items-center text-left px-4 py-2 rounded-lg bg-indigo-600">
+              <button
+                onClick={handleTourneySubmit}
+                className="flex text-white items-center text-left px-4 py-2 rounded-lg bg-indigo-600"
+              >
                 Create
               </button>
             ) : (

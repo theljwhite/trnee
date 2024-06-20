@@ -1,129 +1,59 @@
 {
   "users": [
-    { "id": 1, "username": "jones", "email": "" },
-    { "id": 2, "username": "davis", "email": "" },
-    { "id": 3, "username": "jasmine", "email": "" },
-    { "id": 4, "username": "barns", "email": "" },
-    { "id": 5, "username": "lll", "email": "" },
-    { "id": 6, "username": "QPL", "email": "" },
-    { "id": 7, "username": "qqqq", "email": "" },
-    { "id": 8, "username": "wwww", "email": "" },
-    { "id": 9, "username": "organizer_joe", "email": "" },
-    { "id": 10, "username": "rapha", "email": "" },
-    { "id": 11, "username": "DaHang", "email": "" }
-  ],
-  "participants": [
     {
       "id": 1,
-      "userId": 2,
-      "username": "davis_username",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "jones",
+      "email": ""
     },
     {
       "id": 2,
-      "userId": 3,
-      "username": "johny",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "davis",
+      "email": ""
     },
     {
       "id": 3,
-      "userId": 4,
-      "username": "jasmine_username",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "jasmine",
+      "email": ""
     },
     {
       "id": 4,
-      "userId": 5,
-      "username": "jimthomas",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "barns",
+      "email": ""
     },
     {
       "id": 5,
-      "userId": null,
-      "username": "okayman",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "lll",
+      "email": ""
     },
     {
       "id": 6,
-      "userId": null,
-      "username": "sweetness",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "QPL",
+      "email": ""
     },
     {
       "id": 7,
-      "userId": null,
-      "username": "jimthomas",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "qqqq",
+      "email": ""
     },
     {
       "id": 8,
-      "userId": null,
-      "username": "kevinbacon",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "wwww",
+      "email": ""
     },
     {
       "id": 9,
-      "userId": null,
-      "username": "barnacle",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "organizer_joe",
+      "email": ""
     },
     {
       "id": 10,
-      "userId": null,
-      "username": "frederick",
-      "gameUsername": "",
-      "gameId": 900
+      "username": "rapha",
+      "email": ""
     },
     {
       "id": 11,
-      "userId": null,
-      "username": "skooben",
-      "gameUsername": "",
-      "gameId": 900
-    },
-    {
-      "id": 12,
-      "userId": null,
-      "username": "johnsonjames",
-      "gameUsername": "",
-      "gameId": 900
-    },
-    {
-      "id": 13,
-      "userId": 10,
-      "username": "rapha",
-      "gameUsername": "rapha",
-      "gameId": 900
-    },
-    {
-      "id": 14,
-      "userId": 11,
       "username": "DaHang",
-      "gameUsername": "DaHang",
-      "gameId": 900
-    },
-    {
-      "id": 15,
-      "userId": null,
-      "username": "maxter",
-      "gameUsername": "maxter",
-      "gameId": 900
-    },
-    {
-      "id": 16,
-      "userId": null,
-      "username": "psygib",
-      "gameUsername": "psygib",
-      "gameId": 900
+      "email": ""
     }
   ],
   "tournaments": [
@@ -192,7 +122,6 @@
       "creatorId": 9,
       "status": "ongoing"
     },
-
     {
       "id": 6,
       "name": "CS League Invitational",
@@ -309,6 +238,20 @@
       "isParticipantUpdateAllowed": false,
       "creatorId": 6,
       "status": "ongoing"
+    },
+    {
+      "name": "tourney one",
+      "description": "tourney one desc",
+      "game": "Quake",
+      "format": "SingleElimination",
+      "startTime": "2024-06-30T03:00:00.000Z",
+      "hasCustomSignup": false,
+      "isParticipantUpdateAllowed": false,
+      "isTeamBased": false,
+      "signupKey": "",
+      "creatorId": 3,
+      "status": "pending",
+      "id": 15
     }
   ],
   "matches": [
@@ -433,100 +376,203 @@
     {
       "id": 1,
       "tournamentId": 1,
-      "participantId": 1,
+      "userId": 2,
+      "username": "davis_username",
+      "gameUsername": null,
       "seed": 16
     },
     {
       "id": 2,
       "tournamentId": 1,
-      "participantId": 3,
+      "userId": null,
+      "username": "johny",
+      "gameUsername": null,
       "seed": 15
     },
     {
       "id": 3,
       "tournamentId": 1,
-      "participantId": 2,
-      "seed": 3
+      "userId": null,
+      "username": "skoobtom",
+      "gameUsername": null,
+      "seed": 14
     },
     {
       "id": 4,
       "tournamentId": 1,
-      "participantId": 4,
-      "seed": 4
+      "userId": null,
+      "username": "johnson",
+      "gameUsername": null,
+      "seed": 13
     },
     {
       "id": 5,
       "tournamentId": 1,
-      "participantId": 5,
-      "seed": 5
+      "userId": null,
+      "username": "barkdale",
+      "gameUsername": null,
+      "seed": 12
     },
     {
       "id": 6,
       "tournamentId": 1,
-      "participantId": 6,
-      "seed": 6
+      "userId": null,
+      "username": "kevinbacon",
+      "gameUsername": null,
+      "seed": 11
     },
     {
       "id": 7,
       "tournamentId": 1,
-      "participantId": 7,
-      "seed": 7
+      "userId": null,
+      "username": "baconkevin",
+      "gameUsername": null,
+      "seed": 10
     },
     {
       "id": 8,
       "tournamentId": 1,
-      "participantId": 8,
-      "seed": 8
+      "userId": null,
+      "username": "dannydevito",
+      "gameUsername": null,
+      "seed": 9
     },
     {
       "id": 9,
       "tournamentId": 1,
-      "participantId": 9,
-      "seed": 9
+      "userId": null,
+      "username": "mannymevito",
+      "gameUsername": null,
+      "seed": 8
     },
     {
       "id": 10,
       "tournamentId": 1,
-      "participantId": 10,
-      "seed": 10
+      "userId": null,
+      "username": "marcus",
+      "gameUsername": null,
+      "seed": 7
     },
     {
       "id": 11,
       "tournamentId": 1,
-      "participantId": 11,
-      "seed": 11
+      "userId": null,
+      "username": "maxter",
+      "gameUsername": "maxter",
+      "seed": 6
     },
     {
       "id": 12,
       "tournamentId": 1,
-      "participantId": 12,
-      "seed": 12
+      "userId": null,
+      "username": "v0rb",
+      "gameUsername": null,
+      "seed": 5
     },
     {
       "id": 13,
       "tournamentId": 1,
-      "participantId": 13,
-      "seed": 13
+      "userId": null,
+      "username": "brick",
+      "gameUsername": "brick",
+      "seed": 4
     },
     {
       "id": 14,
       "tournamentId": 1,
-      "participantId": 14,
-      "seed": 14
+      "userId": null,
+      "username": "DaHang",
+      "gameUsername": "DaHang",
+      "seed": 3
     },
     {
       "id": 15,
       "tournamentId": 1,
-      "participantId": 15,
+      "userId": null,
+      "username": "psygib",
+      "gameUsername": "psygib",
+      "seed": 2
+    },
+    {
+      "id": 16,
+      "tournamentId": 1,
+      "userId": null,
+      "username": "rapha",
+      "gameUsername": "rapha",
       "seed": 1
     },
     {
-      "id": 14,
-      "tournamentId": 1,
-      "participantId": 16,
-      "seed": 2
+      "seed": 1,
+      "username": "johyn",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 17
+    },
+    {
+      "seed": 2,
+      "username": "jimbo",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 18
+    },
+    {
+      "seed": 3,
+      "username": "tonya",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 19
+    },
+    {
+      "seed": 4,
+      "username": "rimbo",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 20
+    },
+    {
+      "seed": 5,
+      "username": "jimskoob",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 21
+    },
+    {
+      "seed": 6,
+      "username": "taylor scoob",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 22
+    },
+    {
+      "seed": 7,
+      "username": "matt barksdale",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 23
+    },
+    {
+      "seed": 8,
+      "username": "timbo jones",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 24
     }
   ],
-  "tournament_teams": [{ "id": 1, "seed": 1, "tournamentId": 3, "teamId": 1 }],
+  "tournament_teams": [
+    {
+      "id": 1,
+      "seed": 1,
+      "tournamentId": 3,
+      "teamId": 1
+    }
+  ],
   "participant_stats": []
 }
