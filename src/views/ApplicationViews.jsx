@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import { CreateTourneyProvider } from "../components/create-tournament/CreateTourneyContext";
 import Navbar from "../components/UI/Navbar";
@@ -12,14 +11,6 @@ import Tournament from "../components/tournament/Tournament";
 import CreateStepper from "../components/create-tournament/CreateStepper";
 
 export default function ApplicationViews() {
-  const [currentUser, setCurrentUser] = useState({});
-
-  useEffect(() => {
-    const localTrneeUser = localStorage.getItem("trnee_user");
-    const trneeUser = JSON.parse(localTrneeUser);
-    setCurrentUser(trneeUser);
-  }, []);
-
   return (
     <>
       <Routes>

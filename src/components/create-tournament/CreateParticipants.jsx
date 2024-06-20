@@ -54,7 +54,7 @@ export default function CreateParticipants() {
               participants with their desired seed and their username or name.
               Separate participants with a line break. Ex: &quot;1 johny 2 davis
               3 skimbo&quot; One line would look like &quot;1 johny&quot; and
-              the next line would be "2 davis"
+              the next line would be &quot;2 davis&quot;
             </span>
           )}
         </p>
