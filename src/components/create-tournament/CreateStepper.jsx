@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateTourneyContext } from "./CreateTourneyContext";
 import {
-  validateStep,
   parseParticipantsList,
+  validateStep,
 } from "../../utils/createTourneyValidation";
 import { api } from "../../utils/api";
 import CreateGeneral from "./CreateGeneral";
@@ -47,24 +47,15 @@ export default function CreateStepper() {
       return;
     }
 
-    for (
-      let stepToValidate = currStep;
-      stepToValidate <= index;
-      stepToValidate++
-    ) {
-      //---TODO: when validation is done, uncomment this
+    const errorMessage = validateStep(currStep, state);
+    if (errorMessage) {
+      toastError(errorMessage);
+      return;
+    }
 
-      // const errorMessage = validateStep(stepToValidate, state);
-      // if (errorMessage) {
-      //   setCurrStep(stepToValidate);
-      //   toastError(errorMessage);
-      //   return;
-      // }
-
-      setCurrStep(index);
-      if (index > furthestStep) {
-        setFurthestStep(index);
-      }
+    setCurrStep(index);
+    if (index > furthestStep) {
+      setFurthestStep(index);
     }
   };
 
@@ -96,6 +87,7 @@ export default function CreateStepper() {
                 <button
                   onClick={() => handleStepClick(index)}
                   key={index}
+                  id={index}
                   className={`${
                     index === currStep ? "bg-zinc-700" : "bg-zinc-800"
                   } flex text-white items-center text-left px-4 py-2 rounded-lg`}

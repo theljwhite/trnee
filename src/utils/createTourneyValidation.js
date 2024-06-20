@@ -48,9 +48,9 @@ const validateSettings = (
   isParticipantUpdateAllowed
 ) => {
   if (!format) return "Must select a tournament format";
-  if (!isTeamBased) return "Must select a tournament type";
-  if (!hasCustomSignup) return "Must select a participants option";
-  if (!isParticipantUpdateAllowed) {
+  if (isTeamBased === null) return "Must select a tournament type";
+  if (hasCustomSignup === null) return "Must select a participants option";
+  if (!isParticipantUpdateAllowed === null) {
     return "Must select a match reporting option";
   }
   return "";
