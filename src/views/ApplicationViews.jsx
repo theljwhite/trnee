@@ -10,6 +10,7 @@ import TournamentList from "../components/Tournaments/TournamentList";
 import GameTourneyList from "../components/tournaments/GameTourneyList";
 import Tournament from "../components/tournament/Tournament";
 import CreateStepper from "../components/create-tournament/CreateStepper";
+import NotFound from "../components/UI/NotFound";
 
 export default function ApplicationViews() {
   return (
@@ -59,6 +60,7 @@ export default function ApplicationViews() {
             <Route path=":tourneyId" element={<Tournament />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

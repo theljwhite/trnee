@@ -56,6 +56,26 @@ const validateSettings = (
   return "";
 };
 
+const validateParticipants = (participantsStr, format) => {
+  const participantsArr = parseParticipantsList(participantsStr);
+  switch (format) {
+    case "SingleElimination":
+      //TODO
+      return "";
+    case "DoubleElimination":
+      //TODO
+      return "";
+    case "RoundRobin":
+      //TODO
+      return "";
+    case "Swiss":
+      //TODO
+      return "";
+    default:
+      return "";
+  }
+};
+
 export const parseParticipantsList = (participantsStr) => {
   const lines = participantsStr.trim().split("\n");
 
@@ -89,6 +109,13 @@ export const validationFuncs = new Map([
           "hasCustomSignup",
           "isParticipantUpdateAllowed",
         ],
+      },
+    ],
+    2,
+    [
+      {
+        validation: validateParticipants,
+        stateKey: ["participantsStr", "format"],
       },
     ],
   ],

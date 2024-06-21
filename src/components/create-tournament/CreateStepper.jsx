@@ -62,6 +62,8 @@ export default function CreateStepper() {
   };
 
   const handleTourneySubmit = async () => {
+    handleStepClick(currStep + 1);
+
     const newTourney = await api.tournaments.createTournament({
       ...state,
       creatorId: session.user.id,
