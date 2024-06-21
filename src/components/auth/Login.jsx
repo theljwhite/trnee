@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../auth/useSession";
+import { api } from "../../utils/api";
 import StyledInput from "../UI/StyledInput";
 import { UserIcon, ShieldIconOne } from "../UI/Icons";
+import { toastError } from "../UI/Toast/Toast";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -12,10 +14,17 @@ export default function Login() {
   const { dispatch } = useSession();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const user = { username, password };
-    localStorage.setItem("trnee_user", JSON.stringify(user));
+
+    const user = await api.users.getUserByUsername(username, password);
+
+    if (!user) {
+      toastError("Invalid login. Check your credentials.");
+      return;
+    }
+
+    localStorage.setItem("trnee_user", JSON.stringify({ ...user }));
 
     dispatch({ type: "login", payload: user });
     navigate("/");

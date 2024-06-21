@@ -10,7 +10,25 @@ export const users = {
   getUserById: async (userId) => {
     const response = await fetch(`${usersBase}?id=${userId}`);
     const user = await response.json();
-    return user;
+    return user[0];
+  },
+  getUserByEmail: async (userEmail) => {
+    const userResponse = await fetch(`${usersBase}?email=${userEmail}`);
+    const user = await userResponse.json();
+
+    if (user.length > 0) return user[0];
+
+    return null;
+  },
+  getUserByUsername: async (username, password) => {
+    const userResponse = await fetch(`${usersBase}?username=${username}`);
+    const user = await userResponse.json();
+
+    if (user.length > 0) {
+      if (user[0].password !== password) return null;
+      return user[0];
+    }
+    return null;
   },
   getUserAndTournaments: async (userId) => {
     const userResponse = await fetch(`${usersBase}?id=${userId}`);

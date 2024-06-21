@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSession } from "../../auth/useSession";
 import { useCreateTourneyContext } from "./CreateTourneyContext";
 import {
   parseParticipantsList,
@@ -39,6 +40,7 @@ export default function CreateStepper() {
   const [currStep, setCurrStep] = useState(0);
   const [furthestStep, setFurthestStep] = useState(0);
 
+  const { state: session } = useSession();
   const navigate = useNavigate();
 
   const handleStepClick = (index) => {
@@ -62,7 +64,7 @@ export default function CreateStepper() {
   const handleTourneySubmit = async () => {
     const newTourney = await api.tournaments.createTournament({
       ...state,
-      creatorId: 3, //replace
+      creatorId: session.user.id,
       participants: !state.hasCustomSignup
         ? parseParticipantsList(state.participantsList)
         : null,

@@ -1,20 +1,40 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { api } from "../../utils/api";
 import StyledInput from "../UI/StyledInput";
 import { UserIcon, ShieldIconOne, EmailIcon } from "../UI/Icons";
+import { toastError } from "../UI/Toast/Toast";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e) => {
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    const user = { username, email, password };
+    const existingEmail = await api.users.getUserByEmail(email);
+    const existingUsername = await api.users.getUserByUsername(username);
 
-    //TODO
-    console.log("user", user);
+    if (existingEmail) {
+      toastError("An account with that email already exists.");
+      return;
+    }
+
+    if (existingUsername) {
+      toastError("An account with that username already exists.");
+      return;
+    }
+
+    localStorage.setItem(
+      "trnee_user",
+      JSON.stringify({ username, email, password })
+    );
+
+    navigate("/");
   };
 
   return (

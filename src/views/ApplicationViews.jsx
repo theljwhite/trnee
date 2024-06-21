@@ -1,5 +1,6 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import { CreateTourneyProvider } from "../components/create-tournament/CreateTourneyContext";
+import Authorized from "../auth/Authorized";
 import Navbar from "../components/UI/Navbar";
 import Sidebar from "../components/UI/Sidebar";
 import HomeHero from "../components/UI/HomeHero";
@@ -40,9 +41,11 @@ export default function ApplicationViews() {
             <Route
               index
               element={
-                <CreateTourneyProvider>
-                  <CreateStepper />
-                </CreateTourneyProvider>
+                <Authorized>
+                  <CreateTourneyProvider>
+                    <CreateStepper />
+                  </CreateTourneyProvider>
+                </Authorized>
               }
             />
           </Route>
