@@ -108,7 +108,10 @@ export default function SingleElimBracket({ lines, rounds }) {
 
                   <g clipPath="url(#match-clippath-1)">
                     <svg x="0" y="5" className="match--player">
-                      <title>{round?.match[1]?.username}</title>
+                      {round.match.participants &&
+                        round.match.participants[0] && (
+                          <title>{round.match.participants[0].username}</title>
+                        )}
                       <defs>
                         <clipPath id="clipPath2437111">
                           <rect x="50" y="0" width="143" height="22"></rect>
@@ -119,32 +122,43 @@ export default function SingleElimBracket({ lines, rounds }) {
                       </defs>
                       <path d="M 50 0 h 147 v 22 h -147 Z" />
                       <path d="M 26 0 h 24 v 22 h -24 Z" fill={matchSeedBg} />
-                      <text
-                        x="38"
-                        y="14"
-                        width="10"
-                        height="12"
-                        textAnchor="middle"
-                        className="match--seed text-xs"
-                        fill="#000"
-                      >
-                        {round?.match[1]?.seed}
-                      </text>
-                      <text
-                        clipPath="url(#clipPath2437111)"
-                        x="55"
-                        y="15"
-                        width="147"
-                        height="12"
-                        textAnchor="start"
-                        className="match--player-name text-xs"
-                        fill="#FFF"
-                      >
-                        {round?.match[1]?.username}
-                      </text>
+
+                      {round.match.participants &&
+                        round.match.participants[0] && (
+                          <text
+                            x="38"
+                            y="14"
+                            width="10"
+                            height="12"
+                            textAnchor="middle"
+                            className="match--seed text-xs"
+                            fill="#000"
+                          >
+                            {round.match.participants[0].seed}
+                          </text>
+                        )}
+                      {round.match.participants &&
+                        round.match.participants[0] && (
+                          <text
+                            clipPath="url(#clipPath2437111)"
+                            x="55"
+                            y="15"
+                            width="147"
+                            height="12"
+                            textAnchor="start"
+                            className="match--player-name text-xs"
+                            fill="#FFF"
+                          >
+                            {round?.match.participants[0].username}
+                          </text>
+                        )}
                     </svg>
                     <svg x="0" y="28" className="match--player">
-                      <title>{round?.match[0]?.username}</title>
+                      {round.match.participants &&
+                        round.match.participants[0] && (
+                          <title>{round.match.participants[0].username}</title>
+                        )}
+
                       <defs>
                         <clipPath id="clipPath9207531">
                           <rect x="50" y="0" width="143" height="22"></rect>
@@ -155,29 +169,37 @@ export default function SingleElimBracket({ lines, rounds }) {
                       </defs>
                       <path d="M 50 0 h 147 v 22 h -147 Z" />
                       <path d="M 26 0 h 24 v 22 h -24 Z" fill={matchSeedBg} />
-                      <text
-                        x="38"
-                        y="14"
-                        width="10"
-                        height="12"
-                        textAnchor="middle"
-                        className="match--seed text-xs"
-                        fill="#000"
-                      >
-                        {round?.match[0]?.seed}
-                      </text>
-                      <text
-                        clipPath="url(#clipPath9207531)"
-                        x="55"
-                        y="15"
-                        width="147"
-                        height="12"
-                        textAnchor="start"
-                        className="match--player-name text-xs"
-                        fill="#FFF"
-                      >
-                        {round?.match[0]?.username}
-                      </text>
+
+                      {round.match.participants &&
+                        round.match.participants[1] && (
+                          <text
+                            x="38"
+                            y="14"
+                            width="10"
+                            height="12"
+                            textAnchor="middle"
+                            className="match--seed text-xs"
+                            fill="#000"
+                          >
+                            {round.match.participants[1].seed}
+                          </text>
+                        )}
+
+                      {round.match.participants &&
+                        round.match.participants[1] && (
+                          <text
+                            clipPath="url(#clipPath9207531)"
+                            x="55"
+                            y="15"
+                            width="147"
+                            height="12"
+                            textAnchor="start"
+                            className="match--player-name text-xs"
+                            fill="#FFF"
+                          >
+                            {round.match.participants[1].username}
+                          </text>
+                        )}
                       <line
                         x1="26"
                         y1="-0.5"

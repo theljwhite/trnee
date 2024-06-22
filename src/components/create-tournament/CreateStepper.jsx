@@ -6,6 +6,7 @@ import {
   parseParticipantsList,
   validateStep,
 } from "../../utils/createTourneyValidation";
+import { generateMatches } from "../../utils/bracketLogic";
 import { api } from "../../utils/api";
 import CreateGeneral from "./CreateGeneral";
 import CreateSettings from "./CreateSettings";
@@ -62,7 +63,6 @@ export default function CreateStepper() {
   };
 
   const handleTourneySubmit = async () => {
-    handleStepClick(currStep + 1);
     const newTourney = await api.tournaments.createTournament({
       ...state,
       creatorId: session.user.id,

@@ -1,4 +1,4 @@
-import { generateMatches } from "../utils/bracketLogic";
+import { generateMatches, createDbMatches } from "../utils/bracketLogic";
 
 const matchesBase = "http://localhost:8088/matches";
 const headers = {
@@ -6,26 +6,12 @@ const headers = {
 };
 
 export const matches = {
-  createMatches: async (matchesArr, tournamentId) => {
-    const matchesDbShape = matchesArr.map((match) => ({
-      ...match,
-      participantOneId: match.participants[0].id,
-      participantTwoId: match.participants[1].id,
-      tournamentId,
-    }));
-
-    matchesDbShape.forEach((match) => delete match.participants);
-
-    const matchPromises = matchesDbShape.map((match) =>
-      fetch(matchesBase, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(match),
-      }).then((response) => response.json())
+  createMatches: createDbMatches,
+  getTournamentMatches: async (tournamentId) => {
+    const matchesResponse = await fetch(
+      `${matchesBase}?tournamentId=${tournamentId}`
     );
-
-    const dbMatches = await Promise.all(matchPromises);
-
-    return dbMatches;
+    const matches = await matchesResponse.json();
+    return matches;
   },
 };

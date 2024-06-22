@@ -5,7 +5,6 @@ import {
   doBracketRoundTransforms,
   assignLinePathByRoundNumber,
 } from "../../utils/bracketPosition";
-import { generateMatches } from "../../utils/bracketLogic";
 import TournamentHeader from "./TournamentHeader";
 import Bracket from "./Bracket";
 import { TourneyBracketIconOne } from "../UI/Icons";
@@ -27,22 +26,23 @@ export default function Tournament() {
     const participants = await api.tournaments.getTournamentParticipants(
       tourneyId
     );
-    let matches = [];
 
-    if (tourney.status === "pending") {
-      matches = generateMatches(tourney.format, participants);
-    }
-
-    if (tourney.status === "ongoing" || tourney.status === "completed") {
-      //TODO - logic to fetch and generate bracket from matches
-    }
+    const matches = await api.matches.getTournamentMatches(tourneyId);
+    const matchesWithParticipants = matches.map((match) => {
+      const pOne = participants.find((p) => p.id === match.participantOneId);
+      const pTwo = participants.find((p) => p.id === match.participantTwoId);
+      return {
+        ...match,
+        participants: [pOne, pTwo].sort((a, b) => a.seed - b.seed),
+      };
+    });
 
     const lineTransforms = assignLinePathByRoundNumber(participants.length);
     const roundTransforms = doBracketRoundTransforms(participants.length);
 
     const roundsWithMatchData = roundTransforms.map((transform, index) => ({
       transform,
-      match: matches[index] ?? [],
+      match: matchesWithParticipants[index] ?? {},
     }));
 
     setTournament(tourney);

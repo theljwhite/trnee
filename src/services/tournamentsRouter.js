@@ -1,4 +1,6 @@
+import { api } from "../utils/api";
 import { UPPERCASE_FIRST_LETTER } from "../constants/regularExpressions";
+import { createDbMatches, generateMatches } from "../utils/bracketLogic";
 
 const base = "http://localhost:8088";
 const tourneyBase = `${base}/tournaments`;
@@ -23,8 +25,8 @@ export const tournaments = {
     const newTourney = await tourneyRes.json();
 
     if (!tourneyDetails.hasCustomSignup && participantsArr) {
-      for (const participant of participantsArr) {
-        await fetch(tourneyParticBase, {
+      const tourneyParticPromises = participantsArr.map((participant) =>
+        fetch(tourneyParticBase, {
           method: "POST",
           headers,
           body: JSON.stringify({
@@ -33,8 +35,17 @@ export const tournaments = {
             gameUsername: null,
             tournamentId: newTourney.id,
           }),
-        });
-      }
+        }).then((response) => response.json())
+      );
+
+      const tourneyParticipants = await Promise.all(tourneyParticPromises);
+
+      const newMatches = generateMatches(
+        newTourney.format,
+        tourneyParticipants
+      );
+
+      const dbMatches = await createDbMatches(newMatches, newTourney.id);
     }
     return newTourney;
   },

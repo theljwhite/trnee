@@ -1,7 +1,8 @@
+import { useSession } from "../../auth/useSession";
 import ModalWrapper from "../UI/ModalWrapper";
 import { CloseX } from "../UI/Icons";
 
-//TODO add logic to this
+//TODO add optional game stats to this
 
 export default function MatchModal({ round, setIsOpen }) {
   return (
@@ -31,7 +32,9 @@ export default function MatchModal({ round, setIsOpen }) {
               className="w-20 h-20 rounded-full"
             />
             <span className="text-zinc-300 text-sm font-bold text-center">
-              Name
+              {round.match.matchNumber
+                ? round.match.participants[0].username
+                : "TBD"}
             </span>
           </div>
         </div>
@@ -48,39 +51,47 @@ export default function MatchModal({ round, setIsOpen }) {
               className="w-20 h-20 rounded-full"
             />
             <span className="text-zinc-300 text-sm font-bold text-center">
-              Name
+              {round.match.matchNumber
+                ? round.match.participants[1].username
+                : "TBD"}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="w-full flex justify-center items-center">
-        <table className="bg-zinc-900 text-zinc-300 w-1/4">
-          <tbody className="table-row align-middle">
-            <tr className="table-row">
-              <td className="table-cell px-1.5 pb-1 border border-zinc-800">
-                <div className="inline-block w-28 truncate align-middle">
-                  Name
-                </div>
-              </td>
-              <td className="table-cell border w-10 border-zinc-800 pb-1 px-3">
-                <span className="align-middle text-center">0</span>
-              </td>
-            </tr>
+      {round.match.matchNumber && (
+        <div className="w-full flex justify-center items-center">
+          <table className="bg-zinc-900 text-zinc-300 w-1/4">
+            <tbody className="table-row align-middle">
+              <tr className="table-row">
+                <td className="table-cell px-1.5 pb-1 border border-zinc-800">
+                  <div className="inline-block w-48 truncate align-middle">
+                    {round.match.participants[0].username}
+                  </div>
+                </td>
+                <td className="table-cell border w-10 border-zinc-800 pb-1 px-3">
+                  <span className="align-middle text-center">
+                    {round.match.participantOneScore}
+                  </span>
+                </td>
+              </tr>
 
-            <tr className="table-row">
-              <td className="table-cell px-1.5 pb-1 border border-zinc-800">
-                <div className="inline-block w-28 truncate align-middle">
-                  Namellllllllllllllllllllllllllllll
-                </div>
-              </td>
-              <td className="table-cell border w-10 border-zinc-800 pb-1 px-3">
-                <span className="align-middle text-center">0</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              <tr className="table-row">
+                <td className="table-cell px-1.5 pb-1 border border-zinc-800">
+                  <div className="inline-block w-28 truncate align-middle">
+                    {round.match.participants[1].username}
+                  </div>
+                </td>
+                <td className="table-cell border w-10 border-zinc-800 pb-1 px-3">
+                  <span className="align-middle text-center">
+                    {round.match.participantTwoScore}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
     </ModalWrapper>
   );
 }

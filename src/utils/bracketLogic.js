@@ -1,5 +1,3 @@
-import { api } from "./api";
-
 export const generateSeedingPattern = (participantsCount) => {
   const pattern = [];
 
@@ -19,9 +17,13 @@ const makeBye = (seed, participantsCount) => {
   return seed <= participantsCount ? seed : null;
 };
 
+export const getRoundsCount = (participantsCount) => {
+  return Math.ceil(Math.log(participantsCount) / Math.log(2));
+};
+
 //so that higher seeds dont meet eachother early on in the tournament
 const generateSortedSeedingPattern = (participantsCount) => {
-  const rounds = Math.ceil(Math.log(participantsCount) / Math.log(2));
+  const rounds = getRoundsCount();
 
   if (participantsCount < 2) return null;
 
@@ -73,7 +75,8 @@ export const generateSingleElimMatchesWithPattern = (participants) => {
         matchNumber: i + 1,
         roundNumber: 1,
         status: "pending",
-        score: null,
+        participantOneScore: 0,
+        participantTwoScore: 0,
         winnerId: null,
       });
     }
@@ -101,4 +104,27 @@ export const generateMatches = (tournamentFormat, participants) => {
       break;
   }
   return matches;
+};
+
+export const createDbMatches = async (matchesArr, tournamentId) => {
+  const matchesDbShape = matchesArr.map((match) => ({
+    ...match,
+    participantOneId: match.participants[0].id,
+    participantTwoId: match.participants[1].id,
+    tournamentId,
+  }));
+
+  matchesDbShape.forEach((match) => delete match.participants);
+
+  const matchPromises = matchesDbShape.map((match) =>
+    fetch("http://localhost:8088/matches", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(match),
+    }).then((response) => response.json())
+  );
+
+  const dbMatches = await Promise.all(matchPromises);
+
+  return dbMatches;
 };
