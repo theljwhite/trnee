@@ -1,4 +1,4 @@
-import SingleElimBracket from "../UI/Bracket/SingleElimBracket";
+import SingleElimBracket from "./SingleElimBracket";
 
 export default function Bracket({ tournament, lines, rounds }) {
   return (

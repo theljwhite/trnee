@@ -63,7 +63,6 @@ export default function CreateStepper() {
 
   const handleTourneySubmit = async () => {
     handleStepClick(currStep + 1);
-
     const newTourney = await api.tournaments.createTournament({
       ...state,
       creatorId: session.user.id,
@@ -114,7 +113,7 @@ export default function CreateStepper() {
             ) : (
               <button
                 onClick={() => handleStepClick(currStep + 1)}
-                className="flex text-white  items-center text-left px-4 py-2 rounded-lg bg-indigo-600"
+                className="flex text-white items-center text-left px-4 py-2 rounded-lg bg-indigo-600"
               >
                 Next
               </button>

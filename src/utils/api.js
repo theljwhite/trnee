@@ -1,18 +1,9 @@
 import { tournaments } from "../services/tournamentsRouter";
 import { users } from "../services/usersRouter";
-
-export const withTryCatch = (fn) => {
-  return async (...args) => {
-    try {
-      return await fn(...args);
-    } catch (error) {
-      console.error("Error:", error);
-      throw error;
-    }
-  };
-};
+import { matches } from "../services/matchesRouter";
 
 export const api = {
   tournaments,
   users,
+  matches,
 };
