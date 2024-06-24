@@ -28,22 +28,38 @@ export default function Tournament() {
     );
 
     const matches = await api.matches.getTournamentMatches(tourneyId);
-    const matchesWithParticipants = matches.map((match) => {
-      const pOne = participants.find((p) => p.id === match.participantOneId);
-      const pTwo = participants.find((p) => p.id === match.participantTwoId);
-      return {
-        ...match,
-        participants: [pOne, pTwo].sort((a, b) => a.seed - b.seed),
-      };
+
+    const matchesWithParticipants = matches
+      .map((match) => {
+        const pOne = participants.find((p) => p.id === match.participantOneId);
+        const pTwo = participants.find((p) => p.id === match.participantTwoId);
+        return {
+          ...match,
+          participants: [pOne, pTwo].sort((a, b) => a.seed - b.seed),
+        };
+      })
+      .sort((a, b) => a.matchNumber - b.matchNumber);
+
+    const matchNumberToMatchMap = new Map();
+
+    matchesWithParticipants.forEach((match) => {
+      matchNumberToMatchMap.set(match.matchNumber, match);
     });
+
+    const totalMatches = participants.length - 1;
+    const roundsWithMatchData = Array.from(totalMatches).fill(null);
 
     const lineTransforms = assignLinePathByRoundNumber(participants.length);
     const roundTransforms = doBracketRoundTransforms(participants.length);
 
-    const roundsWithMatchData = roundTransforms.map((transform, index) => ({
-      transform,
-      match: matchesWithParticipants[index] ?? {},
-    }));
+    for (let i = 0; i < totalMatches; i++) {
+      const matchNumber = i + 1;
+      const match = matchNumberToMatchMap.get(matchNumber);
+      roundsWithMatchData[i] = {
+        transform: roundTransforms[i] ?? null,
+        match: match ?? {},
+      };
+    }
 
     setTournament(tourney);
     setParticipants(participants);

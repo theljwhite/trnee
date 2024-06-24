@@ -1,3 +1,6 @@
+import { api } from "./api";
+import { matchesBase } from "../services/matchesRouter";
+
 export const generateSeedingPattern = (participantsCount) => {
   const pattern = [];
 
@@ -117,7 +120,7 @@ export const createDbMatches = async (matchesArr, tournamentId) => {
   matchesDbShape.forEach((match) => delete match.participants);
 
   const matchPromises = matchesDbShape.map((match) =>
-    fetch("http://localhost:8088/matches", {
+    fetch(matchesBase, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(match),
@@ -127,4 +130,85 @@ export const createDbMatches = async (matchesArr, tournamentId) => {
   const dbMatches = await Promise.all(matchPromises);
 
   return dbMatches;
+};
+
+export const getNextMatchNumber = (currMatchNumber, participantsCount) => {
+  let roundNumber = 0;
+  let roundSize = participantsCount / 2;
+
+  while (currMatchNumber > roundSize) {
+    currMatchNumber -= roundSize;
+    roundSize /= 2;
+    roundNumber++;
+  }
+  const nextRoundSize = participantsCount / Math.pow(2, roundNumber + 2);
+  const nextMatchNumber =
+    Math.ceil(currMatchNumber / 2) +
+    nextRoundSize * Math.pow(2, roundNumber + 1);
+
+  return nextMatchNumber;
+};
+
+export const getMatchByMatchNumber = async (matchNumber, tournamentId) => {
+  const response = await fetch(
+    `${matchesBase}?tournamentId=${tournamentId}&matchNumber=${matchNumber}`
+  );
+  const matches = await response.json();
+  return matches.length > 0 ? matches[0] : null;
+};
+
+export const advanceWinnerHandleNextMatch = async (match) => {
+  const participants = await api.tournaments.getTournamentParticipants(
+    match.tournamentId
+  );
+
+  const nextMatchNumber = getNextMatchNumber(
+    match.matchNumber,
+    participants.length
+  );
+  const nextRoundNumber = match.roundNumber + 1;
+
+  const nextMatch = await getMatchByMatchNumber(
+    nextMatchNumber,
+    match.tournamentId
+  );
+
+  if (!nextMatch) {
+    const newMatchRes = await fetch(matchesBase, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        tournamentId: match.tournamentId,
+        roundNumber: nextRoundNumber,
+        matchNumber: nextMatchNumber,
+        participantOneId: match.winnerId,
+        participantTwoId: null,
+        participantOneScore: 0,
+        participantTwoScore: 0,
+        status: "pending",
+        winnerId: null,
+      }),
+    });
+    const newMatch = await newMatchRes.json();
+
+    return newMatch;
+  } else {
+    const updateMatchData = {};
+
+    if (!nextMatch.participantOneId) {
+      updateMatchData.participantOneId = match.winnerId;
+    }
+    if (!nextMatch.participantTwoId) {
+      updateMatchData.participantTwoId = match.winnerId;
+    }
+
+    const updateMatchRes = await fetch(`${matchesBase}/${nextMatch.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateMatchData),
+    });
+    const updatedMatch = await updateMatchRes.json();
+
+    return updatedMatch;
+  }
 };

@@ -4,6 +4,7 @@ export default function StyledInput({
   icon,
   placeholder,
   isDark,
+  type,
 }) {
   const inputBg = isDark ? "bg-zinc-800" : "bg-zinc-900";
   const inputBorder = isDark ? "border-zinc-700" : "border-zinc-800";
@@ -19,6 +20,7 @@ export default function StyledInput({
           <span className="align-[-0.125em] inline-block">{icon}</span>
         </div>
         <input
+          type={type ?? "text"}
           placeholder={placeholder}
           className={`${inputBg} block w-full pt-2 pb-2 pr-2 text-white outline-none`}
           value={stateVar}

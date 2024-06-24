@@ -6,14 +6,16 @@ export default function ModalWrapper({ children, setIsOpen, modalBg }) {
 
   const closeHandler = () => setIsOpen(false);
 
-  useOnClickOutside(modalRef, closeHandler);
+  // useOnClickOutside(modalRef, closeHandler);
 
   return (
     <>
-      <div className="fixed left-0 top-0 z-[50] !m-0 h-dvh w-screen bg-black/[0.40] backdrop-blur" />
+      <div
+        onClick={closeHandler}
+        className="fixed left-0 top-0 z-[50] !m-0 h-dvh w-screen bg-black/[0.40] backdrop-blur"
+      />
       <div
         ref={modalRef}
-        onClick={closeHandler}
         className="fixed left-0 top-0 z-[50] flex h-dvh w-screen items-start justify-center overflow-auto overscroll-y-none"
       >
         <section

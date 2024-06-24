@@ -63,6 +63,7 @@ export default function Login() {
                 stateVar={password}
                 icon={<ShieldIconOne size={18} color="#FFF" />}
                 isDark
+                type="password"
               />
             </div>
             <div className="flex flex-col my-2 gap-2">

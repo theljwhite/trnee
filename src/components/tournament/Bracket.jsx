@@ -31,6 +31,7 @@ export default function Bracket({ tournament, lines, rounds }) {
       {isMatchReportOpen && (
         <MatchReportModal
           round={activeRound}
+          tournament={tournament}
           setIsOpen={setIsMatchReportOpen}
         />
       )}

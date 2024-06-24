@@ -17,13 +17,17 @@ export default function MatchModal({
   const userIsCreator = session.user.id === tournament.creatorId;
 
   const showCreatorMatchReporting =
-    userIsCreator && !tournament.isParticipantUpdateAllowed && isActiveMatch;
+    userIsCreator &&
+    !tournament.isParticipantUpdateAllowed &&
+    isActiveMatch &&
+    round.match.status !== "completed";
 
   const showParticipantMatchReporting =
     (round.participantOneId === session.user.id ||
       round.participantTwoId === session.user.id) &&
     tournament.isParticipantUpdateAllowed &&
-    isActiveMatch;
+    isActiveMatch &&
+    round.match.status !== "completed";
 
   return (
     <ModalWrapper modalBg="bg-zinc-800" setIsOpen={setIsOpen}>
@@ -114,13 +118,13 @@ export default function MatchModal({
           <div className="mt-12 mx-8 flex justify-between">
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center text-zinc-800 justify-center bg-zinc-400 px-4 py-2 rounded-lg cursor-pointer"
+              className="flex items-center text-zinc-800 justify-center bg-zinc-400 px-8 py-2 rounded-lg cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={openReportModal}
-              className="flex items-center text-white justify-center bg-indigo-600 px-4 py-2 rounded-lg cursor-pointer"
+              className="flex items-center text-white justify-center bg-indigo-600 px-8 py-2 rounded-lg cursor-pointer"
             >
               Report Score
             </button>
