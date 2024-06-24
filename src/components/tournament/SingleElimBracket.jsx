@@ -1,5 +1,7 @@
+import { createRoundNames } from "../../utils/bracketLogic";
+
 export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
-  const lineStrokeColor = "#F0F0F0"; //#F0F0F0";
+  const lineStrokeColor = "#F0F0F0";
   const matchSeedBg = "#787a80";
   const matchBaseBg = "#58595e";
   const matchIdColor = "#FFF";
@@ -8,6 +10,9 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
   const scoreLoserBgColor = "#787a80";
   const scoreWinnerBgColor = "#818cf8";
   const scoreNumberColor = "#23252d";
+
+  const roundNamesWidth = 244;
+  const roundNamesHeight = 25;
 
   return (
     <svg id="bracket" width="1253" height="656" viewBox="0 0 1253 656">
@@ -154,8 +159,8 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                     )}
                   </svg>
                   <svg x="0" y="28">
-                    {showParticipantOne && (
-                      <title>{round.match.participants[0].username}</title>
+                    {showParticipantTwo && (
+                      <title>{round.match.participants[1].username}</title>
                     )}
 
                     <path d="M 50 0 h 147 v 22 h -147 Z" />
@@ -215,13 +220,7 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                       </>
                     )}
 
-                    <line
-                      x1="26"
-                      y1="-0.5"
-                      x2="226"
-                      y2="-0.5"
-                      className="match--player-divider"
-                    />
+                    <line x1="26" y1="-0.5" x2="226" y2="-0.5" />
                   </svg>
                 </g>
               </g>
@@ -229,70 +228,28 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
           })}
         </g>
         <g className="rounds" transform="translate(0,0)">
-          <svg className="round" x="0">
-            <g fill={roundHeaderBgColor} className="round-label">
-              <rect width="243" height="25"></rect>
-              <text
-                fill="#FFF"
-                x="122"
-                y="17"
-                width="243"
-                height="15"
-                textAnchor="middle"
-                className="text-xs"
-              >
-                Round 1
-              </text>
-            </g>
-          </svg>
-          <svg className="round" x="244">
-            <g fill={roundHeaderBgColor} className="round-label">
-              <rect width="243" height="25"></rect>
-              <text
-                fill="#FFF"
-                className="text-xs"
-                x="122"
-                y="17"
-                width="243"
-                height="15"
-                textAnchor="middle"
-              >
-                Round 2
-              </text>
-            </g>
-          </svg>
-          <svg className="round" x="488">
-            <g fill={roundHeaderBgColor}>
-              <rect width="243" height="25"></rect>
-              <text
-                fill="#FFF"
-                className="text-xs"
-                x="122"
-                y="17"
-                width="243"
-                height="15"
-                textAnchor="middle"
-              >
-                Semifinals
-              </text>
-            </g>
-          </svg>
-          <svg className="round" x="732">
-            <g fill={roundHeaderBgColor}>
-              <rect width="243" height="25"></rect>
-              <text
-                fill="#FFF"
-                x="122"
-                y="17"
-                width="243"
-                height="15"
-                textAnchor="middle"
-                className="text-xs"
-              >
-                Finals
-              </text>
-            </g>
-          </svg>
+          {createRoundNames(rounds.length, roundNamesWidth).map(
+            (item, index) => {
+              return (
+                <svg key={index} className="round" x={item.x}>
+                  <g fill={roundHeaderBgColor} className="round-label">
+                    <rect width="243" height={roundNamesHeight}></rect>
+                    <text
+                      fill="#FFF"
+                      x="122"
+                      y="17"
+                      width="243"
+                      height="15"
+                      textAnchor="middle"
+                      className="text-xs"
+                    >
+                      {item.name}
+                    </text>
+                  </g>
+                </svg>
+              );
+            }
+          )}
         </g>
       </g>
     </svg>

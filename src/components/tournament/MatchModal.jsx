@@ -17,7 +17,7 @@ export default function MatchModal({
   const userIsCreator = session.user.id === tournament.creatorId;
 
   const hasBothParticipants =
-    !!round?.match?.participants[0] && !!round?.match?.participants[1];
+    !!round?.match?.participants?.[0] && !!round?.match?.participants?.[1];
 
   const showCreatorMatchReporting =
     userIsCreator &&

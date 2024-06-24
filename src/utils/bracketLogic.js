@@ -212,3 +212,18 @@ export const advanceWinnerHandleNextMatch = async (match) => {
     return updatedMatch;
   }
 };
+
+export const createRoundNames = (participantsCount, roundWidth) => {
+  const totalRounds = getRoundsCount(participantsCount);
+  const roundNames = [];
+
+  for (let i = 1; i <= totalRounds; i++) {
+    let name;
+    if (i === totalRounds) name = "Finals";
+    else if (i === totalRounds - 1) name = "Semifinals";
+    else name = `Round ${i}`;
+
+    roundNames.push({ name, x: (i - 1) * roundWidth });
+  }
+  return roundNames;
+};
