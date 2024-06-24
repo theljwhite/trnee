@@ -16,10 +16,14 @@ export default function MatchModal({
   const isActiveMatch = !!round.match.matchNumber;
   const userIsCreator = session.user.id === tournament.creatorId;
 
+  const hasBothParticipants =
+    !!round?.match?.participants[0] && !!round?.match?.participants[1];
+
   const showCreatorMatchReporting =
     userIsCreator &&
     !tournament.isParticipantUpdateAllowed &&
     isActiveMatch &&
+    hasBothParticipants &&
     round.match.status !== "completed";
 
   const showParticipantMatchReporting =
@@ -27,6 +31,7 @@ export default function MatchModal({
       round.participantTwoId === session.user.id) &&
     tournament.isParticipantUpdateAllowed &&
     isActiveMatch &&
+    hasBothParticipants &&
     round.match.status !== "completed";
 
   return (
@@ -73,7 +78,9 @@ export default function MatchModal({
               className="w-20 h-20 rounded-full"
             />
             <span className="text-zinc-300 text-sm font-bold text-center">
-              {isActiveMatch ? round.match.participants[1].username : "TBD"}
+              {isActiveMatch && round.match.participants[1]
+                ? round.match.participants[1].username
+                : "TBD"}
             </span>
           </div>
         </div>
@@ -87,7 +94,9 @@ export default function MatchModal({
                 <tr className="table-row">
                   <td className="table-cell px-1.5 pb-1 border border-zinc-800">
                     <div className="inline-block w-48 truncate align-middle">
-                      {round.match.participants[0].username}
+                      {round.match.participants[0]
+                        ? round.match.participants[0].username
+                        : "TBD"}
                     </div>
                   </td>
                   <td className="table-cell border w-10 border-zinc-800 pb-1 px-3">
@@ -100,7 +109,9 @@ export default function MatchModal({
                 <tr className="table-row">
                   <td className="table-cell px-1.5 pb-1 border border-zinc-800">
                     <div className="inline-block w-28 truncate align-middle">
-                      {round.match.participants[1].username}
+                      {round.match.participants[1]
+                        ? round.match.participants[1].username
+                        : "TBD"}
                     </div>
                   </td>
                   <td className="table-cell border w-10 border-zinc-800 pb-1 px-3">

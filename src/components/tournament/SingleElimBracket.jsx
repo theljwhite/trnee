@@ -7,6 +7,7 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
 
   const scoreLoserBgColor = "#787a80";
   const scoreWinnerBgColor = "#818cf8";
+  const scoreNumberColor = "#23252d";
 
   return (
     <svg id="bracket" width="1253" height="656" viewBox="0 0 1253 656">
@@ -107,7 +108,7 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                         width="10"
                         height="12"
                         textAnchor="middle"
-                        className="text-xs"
+                        className="text-[11px]"
                         fill="#000"
                       >
                         {round.match.participants[0].seed}
@@ -144,7 +145,8 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                           width="21"
                           height="12"
                           textAnchor="middle"
-                          className="text-xs font-bold"
+                          className="text-xs font-semibold"
+                          fill={scoreNumberColor}
                         >
                           {round.match.participantOneScore}
                         </text>
@@ -205,7 +207,8 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                           width="21"
                           height="12"
                           textAnchor="middle"
-                          className="text-xs font-bold"
+                          className="text-xs font-semibold"
+                          fill={scoreNumberColor}
                         >
                           {round.match.participantTwoScore}
                         </text>

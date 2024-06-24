@@ -46,13 +46,12 @@ export default function Tournament() {
       matchNumberToMatchMap.set(match.matchNumber, match);
     });
 
-    const totalMatches = participants.length - 1;
-    const roundsWithMatchData = Array.from(totalMatches).fill(null);
+    const roundsWithMatchData = Array.from(participants.length).fill(null);
 
     const lineTransforms = assignLinePathByRoundNumber(participants.length);
     const roundTransforms = doBracketRoundTransforms(participants.length);
 
-    for (let i = 0; i < totalMatches; i++) {
+    for (let i = 0; i < participants.length; i++) {
       const matchNumber = i + 1;
       const match = matchNumberToMatchMap.get(matchNumber);
       roundsWithMatchData[i] = {
