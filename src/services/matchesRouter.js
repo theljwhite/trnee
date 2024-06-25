@@ -25,6 +25,13 @@ export const matches = {
     const matches = await matchesResponse.json();
     return matches;
   },
+  getMatchesByStatus: async (status, tournamentId) => {
+    const response = await fetch(
+      `${matchesBase}?status=${status}&tournamentId=${tournamentId}`
+    );
+    const matchesByStatus = await response.json();
+    return matchesByStatus;
+  },
   updateMatchFromCreator: async (match, scoreOne, scoreTwo) => {
     if (match.status !== "pending") return null;
 

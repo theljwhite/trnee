@@ -1,4 +1,5 @@
 import { createRoundNames } from "../../utils/bracketLogic";
+import MatchHistory from "./MatchHistory";
 
 export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
   const lineStrokeColor = "#F0F0F0";
@@ -31,7 +32,7 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
             );
           })}
         </g>
-
+        <MatchHistory rounds={rounds} />
         <text x="854" y="548" textAnchor="middle" fill="#FFF">
           3rd Place Match
         </text>
@@ -232,7 +233,7 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
             (item, index) => {
               return (
                 <svg key={index} className="round" x={item.x}>
-                  <g fill={roundHeaderBgColor} className="round-label">
+                  <g fill={roundHeaderBgColor}>
                     <rect width="243" height={roundNamesHeight}></rect>
                     <text
                       fill="#FFF"
