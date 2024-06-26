@@ -7,6 +7,8 @@ import StyledInput from "../UI/StyledInput";
 import { CloseX, DescriptionIcon } from "../UI/Icons";
 import { toastSuccess, toastError } from "../UI/Toast/Toast";
 
+//clean up the validation here at some point
+
 export default function MatchReportModal({ round, tournament, setIsOpen }) {
   const [scoreOne, setScoreOne] = useState(0);
   const [scoreTwo, setScoreTwo] = useState(0);

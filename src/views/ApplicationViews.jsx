@@ -11,6 +11,8 @@ import GameTourneyList from "../components/tournaments/GameTourneyList";
 import Tournament from "../components/tournament/Tournament";
 import CreateStepper from "../components/create-tournament/CreateStepper";
 import NotFound from "../components/UI/NotFound";
+import Dashboard from "../components/user-dashboard/Dashboard";
+import UserTourneyEditor from "../components/user-dashboard/UserTourneyEditor";
 
 export default function ApplicationViews() {
   return (
@@ -58,6 +60,27 @@ export default function ApplicationViews() {
 
           <Route path="trnee" element={<TournamentLayout />}>
             <Route path=":tourneyId" element={<Tournament />} />
+          </Route>
+
+          <Route path="dashboard" element={<TournamentsLayout />}>
+            <Route
+              index
+              element={
+                <Authorized>
+                  <Dashboard />
+                </Authorized>
+              }
+            />
+            <Route path="trnee">
+              <Route
+                path=":tourneyId"
+                element={
+                  <Authorized>
+                    <UserTourneyEditor />
+                  </Authorized>
+                }
+              />
+            </Route>
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

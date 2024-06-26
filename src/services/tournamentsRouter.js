@@ -1,4 +1,3 @@
-import { api } from "../utils/api";
 import { UPPERCASE_FIRST_LETTER } from "../constants/regularExpressions";
 import { createDbMatches, generateMatches } from "../utils/bracketLogic";
 
@@ -74,5 +73,50 @@ export const tournaments = {
     );
     const participants = await response.json();
     return participants;
+  },
+  getUserTournaments: async (userId) => {
+    const response = await fetch(`${tourneyBase}?creatorId=${userId}`);
+    const tournaments = await response.json();
+    return tournaments;
+  },
+  updateTournamentSettings: async (settings, tourneyId) => {
+    const {
+      newName: name,
+      newDescription: description,
+      newStartDate: startDate,
+    } = settings;
+    const tournamentRes = await fetch(`${tourneyBase}?id=${tourneyId}`);
+    const [tournament] = await tournamentRes.json();
+
+    if (tournament.status !== "pending") return null;
+
+    const updateData = Object.assign(
+      {},
+      name && { name },
+      description && { description },
+      startDate && { startDate }
+    );
+
+    const updateRes = await fetch(`${tourneyBase}/${tourneyId}`, {
+      method: "PATCH",
+      headers,
+      body: JSON.stringify(updateData),
+    });
+    const updatedTournament = await updateRes.json();
+
+    return updatedTournament;
+  },
+  deleteTournament: async (userId, tourneyId) => {
+    const tournamentRes = await fetch(`${tourneyBase}?id=${tourneyId}`);
+    const [tournament] = await tournamentRes.json();
+
+    if (tournament.creatorId !== userId) return "Invalid credentials";
+    if (tournament.status !== "pending") {
+      return "Cannot delete a tournament that is ongoing or completed";
+    }
+
+    await fetch(`${tourneyBase}/${tourneyId}`, {
+      method: "DELETE",
+    });
   },
 };

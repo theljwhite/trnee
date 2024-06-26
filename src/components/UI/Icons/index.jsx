@@ -341,6 +341,25 @@ export const AddIconCircle = ({ color, size }) => (
   </svg>
 );
 
+export const AddIconPlus = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fas"
+    data-icon="plus"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+  >
+    <path
+      fill={color ?? "currentColor"}
+      d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"
+    ></path>
+  </svg>
+);
+
 export const ErrorCircle = ({ color, size }) => (
   <svg
     width={size}
@@ -499,5 +518,44 @@ export const CloseX = ({ color, size }) => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z" />
+  </svg>
+);
+
+export const TrashcanDelete = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    display="block"
+    enableBackground="new 0 0 24 24"
+  >
+    <path
+      fill="none"
+      stroke={color ?? "currentColor"}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M6 2.5v-2h4v2M1 2.5h14M9.533 13.5l.25-9M6.217 4.5l.25 9M2.661 4.5l.889 11h8.9l.888-11"
+    ></path>
+  </svg>
+);
+
+export const EditPencil = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-hidden="false"
+    aria-labelledby="ltclid25_title "
+  >
+    <title id="ltclid25_title">Edit</title>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M2 14V11.7071L9.5 4.20708L11.7929 6.49998L4.29289 14H2ZM12.5 5.79287L13.7929 4.49998L11.5 2.20708L10.2071 3.49998L12.5 5.79287ZM11.1464 1.14642L1.14645 11.1464L1 11.5V14.5L1.5 15H4.5L4.85355 14.8535L14.8536 4.85353V4.14642L11.8536 1.14642H11.1464Z"
+      fill={color}
+    ></path>
   </svg>
 );

@@ -6,7 +6,6 @@ import {
   parseParticipantsList,
   validateStep,
 } from "../../utils/createTourneyValidation";
-import { generateMatches } from "../../utils/bracketLogic";
 import { api } from "../../utils/api";
 import CreateGeneral from "./CreateGeneral";
 import CreateSettings from "./CreateSettings";
