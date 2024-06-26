@@ -83,7 +83,7 @@ export const tournaments = {
     const {
       newName: name,
       newDescription: description,
-      newStartDate: startDate,
+      newStartDate: startTime,
     } = settings;
     const tournamentRes = await fetch(`${tourneyBase}?id=${tourneyId}`);
     const [tournament] = await tournamentRes.json();
@@ -94,7 +94,7 @@ export const tournaments = {
       {},
       name && { name },
       description && { description },
-      startDate && { startDate }
+      startTime && { startTime }
     );
 
     const updateRes = await fetch(`${tourneyBase}/${tourneyId}`, {

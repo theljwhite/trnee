@@ -17,7 +17,7 @@ export default function UserTourneyEditor() {
   const [newStartDate, setNewStartDate] = useState(null);
 
   const [actionStatus, setActionStatus] = useState("Idle");
-  const [actionDisabled, setActionDisabled] = useState(false);
+  const [actionDisabled, setActionDisabled] = useState(true);
   const [confirmEntry, setConfirmEntry] = useState("");
 
   const { state: session } = useSession();
@@ -93,7 +93,11 @@ export default function UserTourneyEditor() {
     <>
       {(actionStatus === "Delete" || actionStatus === "Reset") && (
         <ConfirmUserAction
-          setIsOpen={setActionStatus}
+          isOpen={actionStatus === "Delete" || actionStatus === "Reset"}
+          setIsOpen={() => {
+            setActionStatus();
+            setConfirmEntry("");
+          }}
           action={
             actionStatus === "Delete"
               ? handleDeleteTournament

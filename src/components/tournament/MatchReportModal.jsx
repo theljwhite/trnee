@@ -9,7 +9,12 @@ import { toastSuccess, toastError } from "../UI/Toast/Toast";
 
 //clean up the validation here at some point
 
-export default function MatchReportModal({ round, tournament, setIsOpen }) {
+export default function MatchReportModal({
+  round,
+  tournament,
+  isOpen,
+  setIsOpen,
+}) {
   const [scoreOne, setScoreOne] = useState(0);
   const [scoreTwo, setScoreTwo] = useState(0);
   const [userScore, setUserScore] = useState(0);
@@ -81,7 +86,7 @@ export default function MatchReportModal({ round, tournament, setIsOpen }) {
   };
 
   return (
-    <ModalWrapper modalBg="bg-zinc-800" setIsOpen={setIsOpen}>
+    <ModalWrapper modalBg="bg-zinc-800" isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="relative">
         <button
           onClick={() => setIsOpen(false)}

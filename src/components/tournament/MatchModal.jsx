@@ -7,6 +7,7 @@ import { CloseX } from "../UI/Icons";
 
 export default function MatchModal({
   round,
+  isOpen,
   setIsOpen,
   tournament,
   openReportModal,
@@ -35,7 +36,7 @@ export default function MatchModal({
     round.match.status !== "completed";
 
   return (
-    <ModalWrapper modalBg="bg-zinc-800" setIsOpen={setIsOpen}>
+    <ModalWrapper modalBg="bg-zinc-800" isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="relative">
         <button
           onClick={() => setIsOpen(false)}

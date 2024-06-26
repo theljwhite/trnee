@@ -2,6 +2,7 @@ import ModalWrapper from "./ModalWrapper";
 import { CloseX } from "./Icons";
 
 export default function ConfirmUserAction({
+  isOpen,
   setIsOpen,
   action,
   modalTitle,
@@ -10,7 +11,7 @@ export default function ConfirmUserAction({
   actionBtnDisabled,
 }) {
   return (
-    <ModalWrapper modalBg="bg-zinc-800" setIsOpen={setIsOpen}>
+    <ModalWrapper modalBg="bg-zinc-800" isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="px-6 w-full rounded-2xl relative">
         <button
           onClick={() => setIsOpen(false)}
