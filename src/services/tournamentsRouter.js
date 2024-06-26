@@ -118,5 +118,7 @@ export const tournaments = {
     await fetch(`${tourneyBase}/${tourneyId}`, {
       method: "DELETE",
     });
+
+    return "";
   },
 };
