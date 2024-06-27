@@ -132,21 +132,26 @@ export const createDbMatches = async (matchesArr, tournamentId) => {
   return dbMatches;
 };
 
-export const getNextMatchNumber = (currMatchNumber, participantsCount) => {
+export const getNextMatchNumber = (currentMatchNumber, participantsCount) => {
   let roundNumber = 0;
   let roundSize = participantsCount / 2;
+  let cumulativeMatches = 0;
 
-  while (currMatchNumber > roundSize) {
-    currMatchNumber -= roundSize;
+  while (currentMatchNumber > roundSize) {
+    currentMatchNumber -= roundSize;
+    cumulativeMatches += roundSize;
     roundSize /= 2;
     roundNumber++;
   }
-  const nextRoundSize = participantsCount / Math.pow(2, roundNumber + 2);
-  const nextMatchNumber =
-    Math.ceil(currMatchNumber / 2) +
-    nextRoundSize * Math.pow(2, roundNumber + 1);
 
-  return nextMatchNumber;
+  const baseMatchNumber = participantsCount / Math.pow(2, roundNumber + 1);
+
+  const nextMatchNumber = Math.ceil(currentMatchNumber / 2);
+
+  const finalMatchNumber =
+    nextMatchNumber + baseMatchNumber + cumulativeMatches;
+
+  return finalMatchNumber;
 };
 
 export const getMatchByMatchNumber = async (matchNumber, tournamentId) => {
@@ -172,6 +177,9 @@ export const advanceWinnerHandleNextMatch = async (match) => {
     nextMatchNumber,
     match.tournamentId
   );
+
+  console.log("next match no", nextMatchNumber);
+  console.log("next round no", nextRoundNumber);
 
   if (!nextMatch) {
     const newMatchRes = await fetch(matchesBase, {

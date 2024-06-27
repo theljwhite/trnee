@@ -14,13 +14,11 @@ export default function Tournament() {
   const [participants, setParticipants] = useState([]);
   const [lines, setLines] = useState([]);
   const [rounds, setRounds] = useState([]);
-
   const [didTourneyUpdate, setDidTourneyUpdate] = useState(false);
 
   let { tourneyId } = useParams();
 
   useEffect(() => {
-    console.log("normal effect exec'd");
     getAndSetTournament(tourneyId);
   }, []);
 
@@ -69,6 +67,8 @@ export default function Tournament() {
         match: match ?? {},
       };
     }
+
+    console.log("rounds", roundsWithMatchData);
 
     setTournament(tourney);
     setParticipants(participants);

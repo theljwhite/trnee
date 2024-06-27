@@ -359,10 +359,10 @@
       "matchNumber": 9,
       "participantOneId": 21,
       "participantTwoId": 17,
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "status": "pending",
-      "winnerId": null,
+      "participantOneScore": 1,
+      "participantTwoScore": 3,
+      "status": "completed",
+      "winnerId": 17,
       "id": 15
     },
     {
@@ -371,10 +371,10 @@
       "matchNumber": 12,
       "participantOneId": 31,
       "participantTwoId": 23,
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "status": "pending",
-      "winnerId": null,
+      "participantOneScore": 1,
+      "participantTwoScore": 3,
+      "status": "completed",
+      "winnerId": 23,
       "id": 16
     },
     {
