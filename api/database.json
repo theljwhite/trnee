@@ -241,8 +241,8 @@
       "status": "ongoing"
     },
     {
-      "name": "QPL Cup #1",
-      "description": "QPL Duel Cup",
+      "name": "QPL Practice 1 ",
+      "description": "QPL Duel Cup Practice",
       "game": "Quake",
       "format": "SingleElimination",
       "startTime": "2024-06-29T19:00:00.000Z",
@@ -260,38 +260,26 @@
     {
       "matchNumber": 1,
       "roundNumber": 1,
-      "status": "pending",
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "winnerId": null,
-      "participantOneId": 12,
+      "status": "completed",
+      "participantOneScore": "1",
+      "participantTwoScore": "3",
+      "winnerId": 1,
+      "participantOneId": 15,
       "participantTwoId": 1,
       "tournamentId": 15,
       "id": 1
     },
     {
-      "matchNumber": 7,
-      "roundNumber": 1,
-      "status": "pending",
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "winnerId": null,
-      "participantOneId": 5,
-      "participantTwoId": 2,
-      "tournamentId": 15,
-      "id": 2
-    },
-    {
       "matchNumber": 2,
       "roundNumber": 1,
-      "status": "pending",
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "winnerId": null,
-      "participantOneId": 3,
-      "participantTwoId": 4,
+      "status": "completed",
+      "participantOneScore": "3",
+      "participantTwoScore": "1",
+      "winnerId": 7,
+      "participantOneId": 7,
+      "participantTwoId": 8,
       "tournamentId": 15,
-      "id": 3
+      "id": 2
     },
     {
       "matchNumber": 3,
@@ -300,10 +288,10 @@
       "participantOneScore": 0,
       "participantTwoScore": 0,
       "winnerId": null,
-      "participantOneId": 7,
-      "participantTwoId": 13,
+      "participantOneId": 11,
+      "participantTwoId": 4,
       "tournamentId": 15,
-      "id": 4
+      "id": 3
     },
     {
       "matchNumber": 4,
@@ -312,10 +300,10 @@
       "participantOneScore": 0,
       "participantTwoScore": 0,
       "winnerId": null,
-      "participantOneId": 15,
-      "participantTwoId": 8,
+      "participantOneId": 3,
+      "participantTwoId": 12,
       "tournamentId": 15,
-      "id": 5
+      "id": 4
     },
     {
       "matchNumber": 5,
@@ -324,10 +312,10 @@
       "participantOneScore": 0,
       "participantTwoScore": 0,
       "winnerId": null,
-      "participantOneId": 9,
-      "participantTwoId": 14,
+      "participantOneId": 13,
+      "participantTwoId": 2,
       "tournamentId": 15,
-      "id": 6
+      "id": 5
     },
     {
       "matchNumber": 6,
@@ -336,7 +324,19 @@
       "participantOneScore": 0,
       "participantTwoScore": 0,
       "winnerId": null,
-      "participantOneId": 16,
+      "participantOneId": 5,
+      "participantTwoId": 10,
+      "tournamentId": 15,
+      "id": 6
+    },
+    {
+      "matchNumber": 7,
+      "roundNumber": 1,
+      "status": "pending",
+      "participantOneScore": 0,
+      "participantTwoScore": 0,
+      "winnerId": null,
+      "participantOneId": 9,
       "participantTwoId": 6,
       "tournamentId": 15,
       "id": 7
@@ -344,14 +344,38 @@
     {
       "matchNumber": 8,
       "roundNumber": 1,
-      "status": "pending",
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "winnerId": null,
-      "participantOneId": 11,
-      "participantTwoId": 10,
+      "status": "completed",
+      "participantOneScore": "3",
+      "participantTwoScore": "2",
+      "winnerId": 16,
+      "participantOneId": 16,
+      "participantTwoId": 14,
       "tournamentId": 15,
       "id": 8
+    },
+    {
+      "tournamentId": 15,
+      "roundNumber": 2,
+      "matchNumber": 9,
+      "participantOneId": 1,
+      "participantTwoId": 7,
+      "participantOneScore": 0,
+      "participantTwoScore": 0,
+      "status": "pending",
+      "winnerId": null,
+      "id": 9
+    },
+    {
+      "tournamentId": 15,
+      "roundNumber": 2,
+      "matchNumber": 12,
+      "participantOneId": 16,
+      "participantTwoId": null,
+      "participantOneScore": 0,
+      "participantTwoScore": 0,
+      "status": "pending",
+      "winnerId": null,
+      "id": 10
     }
   ],
   "teams": [
@@ -392,108 +416,12 @@
       "id": 1
     },
     {
-      "seed": 7,
-      "username": "vengeurr",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 2
-    },
-    {
-      "seed": 8,
-      "username": "TOXJQ",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 3
-    },
-    {
-      "seed": 9,
-      "username": "nosfa",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 4
-    },
-    {
-      "seed": 10,
-      "username": "psygib",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 5
-    },
-    {
-      "seed": 11,
-      "username": "serious",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 6
-    },
-    {
-      "seed": 12,
-      "username": "av3k",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 7
-    },
-    {
-      "seed": 13,
-      "username": "dramis",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 8
-    },
-    {
-      "seed": 14,
-      "username": "xron",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 9
-    },
-    {
-      "seed": 15,
-      "username": "zenaku",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 10
-    },
-    {
-      "seed": 2,
-      "username": "DaHang",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 11
-    },
-    {
-      "seed": 16,
-      "username": "cha1n",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 12
-    },
-    {
-      "seed": 5,
-      "username": "cypher",
-      "userId": null,
-      "gameUsername": null,
-      "tournamentId": 15,
-      "id": 13
-    },
-    {
       "seed": 3,
       "username": "k1llsen",
       "userId": null,
       "gameUsername": null,
       "tournamentId": 15,
-      "id": 14
+      "id": 2
     },
     {
       "seed": 4,
@@ -501,11 +429,107 @@
       "userId": null,
       "gameUsername": null,
       "tournamentId": 15,
-      "id": 15
+      "id": 3
+    },
+    {
+      "seed": 5,
+      "username": "cypher",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 4
     },
     {
       "seed": 6,
       "username": "RAISY",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 5
+    },
+    {
+      "seed": 7,
+      "username": "vengeurr",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 6
+    },
+    {
+      "seed": 8,
+      "username": "TOXJQ",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 7
+    },
+    {
+      "seed": 9,
+      "username": "nosfa",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 8
+    },
+    {
+      "seed": 10,
+      "username": "psygib",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 9
+    },
+    {
+      "seed": 11,
+      "username": "serious",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 10
+    },
+    {
+      "seed": 12,
+      "username": "av3k",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 11
+    },
+    {
+      "seed": 13,
+      "username": "dramis",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 12
+    },
+    {
+      "seed": 14,
+      "username": "xron",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 13
+    },
+    {
+      "seed": 15,
+      "username": "zenaku",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 14
+    },
+    {
+      "seed": 16,
+      "username": "cha1n",
+      "userId": null,
+      "gameUsername": null,
+      "tournamentId": 15,
+      "id": 15
+    },
+    {
+      "seed": 2,
+      "username": "DaHang",
       "userId": null,
       "gameUsername": null,
       "tournamentId": 15,

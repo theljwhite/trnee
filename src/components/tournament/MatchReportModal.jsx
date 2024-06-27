@@ -23,8 +23,12 @@ export default function MatchReportModal({
   const { state: session } = useSession();
   const userIsCreator = session.user.id === tournament.creatorId;
 
-  const participantOne = round.match.participants[0].username;
-  const participantTwo = round.match.participants[1].username;
+  const pOne = round.match.participants.find(
+    (participant) => participant.id === round.match.participantOneId
+  );
+  const pTwo = round.match.participants.find(
+    (participant) => participant.id === round.match.participantTwoId
+  );
 
   const handleMatchUpdate = async () => {
     if (!isScoresValidated()) return;
@@ -64,13 +68,13 @@ export default function MatchReportModal({
       }
       if (scoreOne && !NUMBERS_ONLY_REGEX.test(scoreOne)) {
         toastError(
-          `Invalid entry for ${participantOne}. Scores must be numeric.`
+          `Invalid entry for ${pOne.username}. Scores must be numeric.`
         );
         return false;
       }
       if (scoreTwo && !NUMBERS_ONLY_REGEX.test(scoreTwo)) {
         toastError(
-          `Invalid entry for ${participantTwo}. Scores must be numeric.`
+          `Invalid entry for ${pTwo.username}. Scores must be numeric.`
         );
         return false;
       }
@@ -115,24 +119,24 @@ export default function MatchReportModal({
           <>
             <div className="col-span-full">
               <label className="block text-sm font-medium text-gray-400 mb-1">
-                Enter a new score for &quot;{participantOne}&quot;
+                Enter a new score for &quot;{pOne.username}&quot;
               </label>
               <StyledInput
                 stateVar={scoreOne}
                 onChange={(e) => setScoreOne(e.target.value)}
-                placeholder={`${participantOne} score`}
+                placeholder={`${pOne.username} score`}
                 icon={<DescriptionIcon size={18} color="#FFF" />}
                 type="number"
               />
             </div>
             <div className="col-span-full">
               <label className="block text-sm font-medium text-gray-400 mb-1">
-                Enter a new score for &quot;{participantTwo}&quot;
+                Enter a new score for &quot;{pTwo.username}&quot;
               </label>
               <StyledInput
                 stateVar={scoreTwo}
                 onChange={(e) => setScoreTwo(e.target.value)}
-                placeholder={`${participantTwo} score`}
+                placeholder={`${pTwo.username} score`}
                 icon={<DescriptionIcon size={18} color="#FFF" />}
                 type="number"
               />

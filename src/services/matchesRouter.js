@@ -33,41 +33,14 @@ export const matches = {
     return matchesByStatus;
   },
   updateMatchFromCreator: async (match, scoreOne, scoreTwo) => {
-    if (match.status !== "pending") return null;
-
-    const sortedBySeed = match.participants.sort((a, b) => a.seed - b.seed);
-    const seedToScore = new Map([
-      [sortedBySeed[0].seed, Number(scoreOne)],
-      [sortedBySeed[1].seed, Number(scoreTwo)],
-    ]);
-
     if (scoreOne && scoreTwo) {
-      const particWithScores = sortedBySeed.map((participant) => {
-        if (participant.id === match.participantOneId) {
-          return { ...participant, score: seedToScore.get(participant.seed) };
-        } else if (participant.id === match.participantTwoId) {
-          return { ...participant, score: seedToScore.get(participant.seed) };
-        }
-        return participant;
-      });
-      const participantOneScore = particWithScores.find(
-        (p) => p.id === match.participantOneId
-      ).score;
-
-      const participantTwoScore = particWithScores.find(
-        (p) => p.id === match.participantTwoId
-      ).score;
-
       const updateData = {
-        participantOneScore,
-        participantTwoScore,
+        participantOneScore: scoreOne,
+        participantTwoScore: scoreTwo,
         status: "completed",
         winnerId:
-          participantOneScore > participantTwoScore
-            ? match.participantOneId
-            : match.participantTwoId,
+          scoreOne > scoreTwo ? match.participantOneId : match.participantTwoId,
       };
-
       const updateRes = await fetch(`${matchesBase}/${match.id}`, {
         method: "PATCH",
         headers,

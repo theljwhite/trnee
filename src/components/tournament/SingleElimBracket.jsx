@@ -36,15 +36,19 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
         </text>
         <g>
           {rounds.map((round, index) => {
-            const showParticipantOne =
-              round.match &&
-              round.match.participants &&
-              round.match.participants[0];
+            const pOne = round?.match?.participants?.find(
+              (p) => p?.id === round?.match?.participantOneId
+            );
+            const pTwo = round?.match?.participants?.find(
+              (p) => p?.id === round?.match?.participantTwoId
+            );
 
-            const showParticipantTwo =
-              round.match &&
-              round.match.participants &&
-              round.match.participants[1];
+            const participantOne = pOne
+              ? { ...pOne, score: Number(round?.match?.participantOneScore) }
+              : null;
+            const participantTwo = pTwo
+              ? { ...pTwo, score: Number(round?.match?.participantTwoScore) }
+              : null;
 
             return (
               <g
@@ -90,10 +94,9 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                 />
 
                 <g clipPath="url(#match-clippath-1)">
-                  <svg x="0" y="5" className="match--player">
-                    {showParticipantOne && (
-                      <title>{round.match.participants[0].username}</title>
-                    )}
+                  <svg x="0" y="5">
+                    <title>{participantOne?.username}</title>
+
                     <defs>
                       <clipPath id="clipPath2437111">
                         <rect x="50" y="0" width="143" height="22"></rect>
@@ -105,39 +108,36 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                     <path d="M 50 0 h 147 v 22 h -147 Z" />
                     <path d="M 26 0 h 24 v 22 h -24 Z" fill={matchSeedBg} />
 
-                    {showParticipantOne && (
-                      <text
-                        x="38"
-                        y="14"
-                        width="10"
-                        height="12"
-                        textAnchor="middle"
-                        className="text-[11px]"
-                        fill="#000"
-                      >
-                        {round.match.participants[0].seed}
-                      </text>
-                    )}
-                    {showParticipantOne && (
-                      <text
-                        clipPath="url(#clipPath2437111)"
-                        x="55"
-                        y="15"
-                        width="147"
-                        height="12"
-                        textAnchor="start"
-                        className="text-xs"
-                        fill="#FFF"
-                      >
-                        {round.match.participants[0].username}
-                      </text>
-                    )}
+                    <text
+                      x="38"
+                      y="14"
+                      width="10"
+                      height="12"
+                      textAnchor="middle"
+                      className="text-[11px]"
+                      fill="#000"
+                    >
+                      {participantOne?.seed}
+                    </text>
+
+                    <text
+                      clipPath="url(#clipPath2437111)"
+                      x="55"
+                      y="15"
+                      width="147"
+                      height="12"
+                      textAnchor="start"
+                      className="text-xs [text-shadow:1px_1px_1px_#222]"
+                      fill="#FFF"
+                    >
+                      {participantOne?.username}
+                    </text>
+
                     {round.match && round.match.participantOneScore && (
                       <>
                         <path
                           fill={
-                            round.match.participantOneScore >
-                            round.match.participantTwoScore
+                            participantOne?.score > participantTwo?.score
                               ? scoreWinnerBgColor
                               : scoreLoserBgColor
                           }
@@ -152,54 +152,47 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                           className="text-xs font-semibold"
                           fill={scoreNumberColor}
                         >
-                          {round.match.participantOneScore}
+                          {participantOne?.score}
                         </text>
                       </>
                     )}
                   </svg>
                   <svg x="0" y="28">
-                    {showParticipantTwo && (
-                      <title>{round.match.participants[1].username}</title>
-                    )}
+                    <title>{participantTwo?.username}</title>
 
                     <path d="M 50 0 h 147 v 22 h -147 Z" />
                     <path d="M 26 0 h 24 v 22 h -24 Z" fill={matchSeedBg} />
 
-                    {showParticipantTwo && (
-                      <text
-                        x="38"
-                        y="14"
-                        width="10"
-                        height="12"
-                        textAnchor="middle"
-                        className="match--seed text-xs"
-                        fill="#000"
-                      >
-                        {round.match.participants[1].seed}
-                      </text>
-                    )}
+                    <text
+                      x="38"
+                      y="14"
+                      width="10"
+                      height="12"
+                      textAnchor="middle"
+                      className="text-xs"
+                      fill="#000"
+                    >
+                      {participantTwo?.seed}
+                    </text>
 
-                    {showParticipantTwo && (
-                      <text
-                        clipPath="url(#clipPath9207531)"
-                        x="55"
-                        y="15"
-                        width="147"
-                        height="12"
-                        textAnchor="start"
-                        className="match--player-name text-xs"
-                        fill="#FFF"
-                      >
-                        {round.match.participants[1].username}
-                      </text>
-                    )}
+                    <text
+                      clipPath="url(#clipPath9207531)"
+                      x="55"
+                      y="15"
+                      width="147"
+                      height="12"
+                      textAnchor="start"
+                      className="text-xs [text-shadow:1px_1px_1px_#222]"
+                      fill="#FFF"
+                    >
+                      {participantTwo?.username}
+                    </text>
 
                     {round.match && round.match.participantTwoScore && (
                       <>
                         <path
                           fill={
-                            round.match.participantTwoScore >
-                            round.match.participantOneScore
+                            participantTwo?.score > participantOne?.score
                               ? scoreWinnerBgColor
                               : scoreLoserBgColor
                           }
@@ -214,7 +207,7 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
                           className="text-xs font-semibold"
                           fill={scoreNumberColor}
                         >
-                          {round.match.participantTwoScore}
+                          {participantTwo?.score}
                         </text>
                       </>
                     )}
