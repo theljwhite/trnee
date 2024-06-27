@@ -69,7 +69,7 @@ export default function CreateSettings() {
                   showPreviousMonths={false}
                   showTimeSelect
                   showTimeInput
-                  timeIntervals={60}
+                  timeIntervals={15}
                   timeFormat="HH:mm"
                   dateFormat="MM/dd/yyyy HH:mm:ss"
                 />

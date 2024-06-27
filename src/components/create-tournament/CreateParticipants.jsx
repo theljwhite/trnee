@@ -96,7 +96,7 @@ export default function CreateParticipants() {
               onChange={(e) => onParticipantEntryChange(e)}
               placeholder="Enter a list of participants"
               icon={<UsersIcon size={18} color="#FFF" />}
-              height="96"
+              height="300"
               isDark
             />
           </div>

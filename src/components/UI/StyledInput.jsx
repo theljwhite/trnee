@@ -21,6 +21,8 @@ export default function StyledInput({
           <span className="align-[-0.125em] inline-block">{icon}</span>
         </div>
         <input
+          autoComplete="off"
+          spellCheck="false"
           id={id ?? `input-${placeholder.slice(0, 10)}-${type}`}
           type={type ?? "text"}
           placeholder={placeholder}

@@ -35,7 +35,7 @@ export default function ConfirmUserAction({
           <button
             onClick={action}
             disabled={actionBtnDisabled}
-            className="flex items-center text-white justify-center bg-indigo-600 px-8 py-2 rounded-lg cursor-pointer disabled:bg-stone-400 disabled:text-stone-500"
+            className="flex items-center text-white justify-center bg-indigo-600 px-8 py-2 rounded-lg cursor-pointer disabled:bg-stone-400 disabled:text-stone-500 disabled:cursor-not-allowed"
           >
             {modalTitle}
           </button>

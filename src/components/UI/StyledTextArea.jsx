@@ -24,9 +24,8 @@ export default function StyledTextArea({
           autoCorrect="off"
           autoComplete="off"
           placeholder={placeholder}
-          className={`${inputBg} ${
-            height ? `h-${height}` : ""
-          } block w-full pt-2 pb-2 pr-2 text-white outline-none`}
+          className={`${inputBg} block w-full pt-2 pb-2 pr-2 text-white outline-none`}
+          style={{ height: height && `${height}px` }}
           value={stateVar}
           onChange={onChange}
         />
