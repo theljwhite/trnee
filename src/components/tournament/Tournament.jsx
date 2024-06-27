@@ -68,8 +68,6 @@ export default function Tournament() {
       };
     }
 
-    console.log("rounds", roundsWithMatchData);
-
     setTournament(tourney);
     setParticipants(participants);
     setLines(lineTransforms);
