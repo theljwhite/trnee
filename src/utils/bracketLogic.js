@@ -26,7 +26,7 @@ export const getRoundsCount = (participantsCount) => {
 
 //so that higher seeds dont meet eachother early on in the tournament
 const generateSortedSeedingPattern = (participantsCount) => {
-  const rounds = getRoundsCount();
+  const rounds = getRoundsCount(participantsCount);
 
   if (participantsCount < 2) return null;
 
@@ -145,7 +145,6 @@ export const getNextMatchNumber = (currentMatchNumber, participantsCount) => {
   }
 
   const baseMatchNumber = participantsCount / Math.pow(2, roundNumber + 1);
-
   const nextMatchNumber = Math.ceil(currentMatchNumber / 2);
 
   const finalMatchNumber =
@@ -177,9 +176,6 @@ export const advanceWinnerHandleNextMatch = async (match) => {
     nextMatchNumber,
     match.tournamentId
   );
-
-  console.log("next match no", nextMatchNumber);
-  console.log("next round no", nextRoundNumber);
 
   if (!nextMatch) {
     const newMatchRes = await fetch(matchesBase, {

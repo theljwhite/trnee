@@ -44,7 +44,7 @@ export const tournaments = {
         tourneyParticipants
       );
 
-      const dbMatches = await createDbMatches(newMatches, newTourney.id);
+      await createDbMatches(newMatches, newTourney.id);
     }
     return newTourney;
   },

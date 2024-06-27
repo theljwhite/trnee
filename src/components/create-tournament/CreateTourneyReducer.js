@@ -16,21 +16,6 @@ export const createTourneyInitialState = {
   participantsList: "",
   signupKey: null,
   signupUrl: null,
-  formatOptions: [
-    "SingleElimination",
-    "DoubleElimination",
-    "RoundRobin",
-    "Swiss",
-    "Leaderboard",
-  ],
-  participantsOptions: [
-    "Provide a list of participants",
-    "Allow participants to signup after tournament creation",
-  ],
-  matchReportOptions: [
-    "Allow participants to report match scores",
-    "Only tournament creator can report match scores",
-  ],
 };
 
 export const createTourneyReducer = (state, action) => {

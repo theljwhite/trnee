@@ -43,7 +43,10 @@ export default function Tournament() {
         const pTwo = participants.find((p) => p.id === match.participantTwoId);
         return {
           ...match,
-          participants: [pOne, pTwo].sort((a, b) => a.seed - b.seed),
+          participants:
+            match.roundNumber === 1
+              ? [pOne, pTwo].sort((a, b) => a.seed - b.seed)
+              : [pOne, pTwo],
         };
       })
       .sort((a, b) => a.matchNumber - b.matchNumber);
