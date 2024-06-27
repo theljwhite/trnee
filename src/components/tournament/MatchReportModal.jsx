@@ -14,6 +14,7 @@ export default function MatchReportModal({
   tournament,
   isOpen,
   setIsOpen,
+  setDidTourneyUpdate,
 }) {
   const [scoreOne, setScoreOne] = useState(0);
   const [scoreTwo, setScoreTwo] = useState(0);
@@ -40,12 +41,14 @@ export default function MatchReportModal({
         toastSuccess(
           `Match #${updatedMatch.matchNumber} was updated and winner was moved to round ${nextMatch.roundNumber}.`
         );
+        setDidTourneyUpdate(true);
       }
 
       if ((!scoreOne && scoreTwo) || (!scoreTwo && scoreOne)) {
         toastSuccess(
           `Match #${updatedMatch.matchNumber} was updated - once other score is reported, winner will be moved to round ${nextMatch.roundNumber}`
         );
+        setDidTourneyUpdate(true);
       }
       setIsOpen(false);
     } else {

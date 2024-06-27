@@ -1,5 +1,4 @@
 import { createRoundNames } from "../../utils/bracketLogic";
-import MatchHistory from "./MatchHistory";
 
 export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
   const lineStrokeColor = "#F0F0F0";
@@ -32,7 +31,6 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
             );
           })}
         </g>
-        <MatchHistory rounds={rounds} />
         <text x="854" y="548" textAnchor="middle" fill="#FFF">
           3rd Place Match
         </text>

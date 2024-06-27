@@ -15,11 +15,21 @@ export default function Tournament() {
   const [lines, setLines] = useState([]);
   const [rounds, setRounds] = useState([]);
 
+  const [didTourneyUpdate, setDidTourneyUpdate] = useState(false);
+
   let { tourneyId } = useParams();
 
   useEffect(() => {
+    console.log("normal effect exec'd");
     getAndSetTournament(tourneyId);
   }, []);
+
+  useEffect(() => {
+    if (didTourneyUpdate) {
+      getAndSetTournament(tourneyId);
+      setDidTourneyUpdate(false);
+    }
+  }, [didTourneyUpdate]);
 
   const getAndSetTournament = async () => {
     const [tourney] = await api.tournaments.getTournamentById(tourneyId);
@@ -83,7 +93,12 @@ export default function Tournament() {
           </div>
         </div>
       ) : (
-        <Bracket tournament={tournament} lines={lines} rounds={rounds} />
+        <Bracket
+          tournament={tournament}
+          lines={lines}
+          rounds={rounds}
+          setDidTourneyUpdate={setDidTourneyUpdate}
+        />
       )}
     </>
   );

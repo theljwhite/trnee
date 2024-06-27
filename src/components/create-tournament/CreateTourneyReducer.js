@@ -1,15 +1,36 @@
+const startTimeRound = 1000 * 60 * 15;
+const currDate = new Date();
+const startTimeNextInterval = new Date(
+  Math.ceil(currDate.getTime() / startTimeRound) * startTimeRound
+);
+
 export const createTourneyInitialState = {
   name: "",
   description: "",
   game: null,
   format: "SingleElimination",
-  startTime: new Date(),
+  startTime: startTimeNextInterval,
   hasCustomSignup: null,
   isParticipantUpdateAllowed: null,
   isTeamBased: null,
   participantsList: "",
   signupKey: null,
   signupUrl: null,
+  formatOptions: [
+    "SingleElimination",
+    "DoubleElimination",
+    "RoundRobin",
+    "Swiss",
+    "Leaderboard",
+  ],
+  participantsOptions: [
+    "Provide a list of participants",
+    "Allow participants to signup after tournament creation",
+  ],
+  matchReportOptions: [
+    "Allow participants to report match scores",
+    "Only tournament creator can report match scores",
+  ],
 };
 
 export const createTourneyReducer = (state, action) => {

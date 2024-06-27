@@ -2,8 +2,14 @@ import { useState } from "react";
 import SingleElimBracket from "./SingleElimBracket";
 import MatchModal from "./MatchModal";
 import MatchReportModal from "./MatchReportModal";
+import MatchHistoryTable from "./MatchHistoryTable";
 
-export default function Bracket({ tournament, lines, rounds }) {
+export default function Bracket({
+  tournament,
+  lines,
+  rounds,
+  setDidTourneyUpdate,
+}) {
   const [activeRound, setActiveRound] = useState({});
   const [isMatchDetailsOpen, setIsMatchDetailsOpen] = useState(false);
   const [isMatchReportOpen, setIsMatchReportOpen] = useState(false);
@@ -35,22 +41,26 @@ export default function Bracket({ tournament, lines, rounds }) {
           tournament={tournament}
           isOpen={isMatchReportOpen}
           setIsOpen={setIsMatchReportOpen}
+          setDidTourneyUpdate={setDidTourneyUpdate}
         />
       )}
       <div className="h-full w-full bg-zinc-900">
-        {tournament.format === "SingleElimination" ? (
-          <SingleElimBracket
-            lines={lines}
-            rounds={rounds}
-            openMatchModal={openMatchModal}
-          />
-        ) : tournament.format === "DoubleElimination" ? (
-          <span>TODO DoubleElim</span>
-        ) : tournament.format === "RoundRobin" ? (
-          <span>TODO RoundRobin</span>
-        ) : (
-          <span>TODO Swiss</span>
-        )}
+        <div className="relative">
+          {tournament.format === "SingleElimination" ? (
+            <SingleElimBracket
+              lines={lines}
+              rounds={rounds}
+              openMatchModal={openMatchModal}
+            />
+          ) : tournament.format === "DoubleElimination" ? (
+            <span>TODO DoubleElim</span>
+          ) : tournament.format === "RoundRobin" ? (
+            <span>TODO RoundRobin</span>
+          ) : (
+            <span>TODO Swiss</span>
+          )}
+          <MatchHistoryTable rounds={rounds} />
+        </div>
       </div>
     </>
   );
