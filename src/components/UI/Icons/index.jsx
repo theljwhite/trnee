@@ -691,3 +691,50 @@ export const CodeBracketIcon = ({ color, size }) => (
     </g>
   </svg>
 );
+
+export const MinimizeIcon = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    fill="none"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20.0735 2L21.4877 3.41421L15.6378 9.26416H18.1824V11.2642H12.1824V5.26416H14.1824V7.89111L20.0735 2Z"
+      fill={color ?? "currentColor"}
+    />
+    <path
+      d="M11.1824 12.2642V18.2642H9.1824V15.8422L3.41421 21.6104L2 20.1962L7.93203 14.2642H5.1824V12.2642H11.1824Z"
+      fill={color ?? "currentColor"}
+    />
+  </svg>
+);
+
+export const MaximizeIcon = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color ?? "currentColor"}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+  </svg>
+);
+
+export const MinimizeLine = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    fill={color ?? "currentColor"}
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M480 480H32c-17.75 0-32-14.25-32-32s14.25-32 32-32h448c17.75 0 32 14.25 32 32S497.8 480 480 480z" />
+  </svg>
+);

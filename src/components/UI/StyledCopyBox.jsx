@@ -12,10 +12,8 @@ export default function StyledCopyBox({
   const [isHidden, setIsHidden] = useState(isSecret);
 
   const copyText = () => {
-    if (withToast) {
-      copyTextToClipboard(String(dataToCopy));
-      toastSuccess(`Copied '${copyBoxLabel}'`);
-    } else copyTextToClipboard(String(dataToCopy));
+    copyTextToClipboard(String(dataToCopy));
+    if (withToast) toastSuccess(`Copied '${copyBoxLabel}'`);
   };
 
   return (

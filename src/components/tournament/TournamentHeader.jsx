@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+import { useSession } from "../../auth/useSession";
 import { SPACE_BETWEEN_CAPITALS_REPLACE } from "../../constants/regularExpressions";
 import { copyTextToClipboard } from "../../utils/copyText";
 
 export default function TournamentHeader({ tournament }) {
+  const { state: session } = useSession();
+
   return (
     <div className="flex flex-wrap lg:flex-nowrap items-center border-b border-zinc-800 pb-4 mb-4">
       <div className="w-full lg:w-1/3">
@@ -18,9 +22,14 @@ export default function TournamentHeader({ tournament }) {
         </div>
       </div>
       <div className="w-full lg:w-1/3 flex lg:justify-end">
-        <button className="flex items-center text-white justify-center bg-zinc-800 mr-2 px-4 py-2 rounded-lg cursor-pointer">
-          <span className="hidden xl:inline">Enter TRNEE</span>
-        </button>
+        {session?.user?.id === tournament.creatorId && (
+          <Link
+            to={`/dashboard/trnee/${tournament.id}`}
+            className="flex items-center text-white justify-center bg-zinc-800 mr-2 px-4 py-2 rounded-lg cursor-pointer"
+          >
+            <span className="hidden xl:inline">Manage TRNEE</span>
+          </Link>
+        )}
         <button
           onClick={() => copyTextToClipboard(window.location.href)}
           className="flex items-center text-white justify-center bg-zinc-800 mr-2 px-4 py-2 rounded-lg cursor-pointer"
