@@ -3,6 +3,7 @@ import SingleElimBracket from "./SingleElimBracket";
 import MatchModal from "./MatchModal";
 import MatchReportModal from "./MatchReportModal";
 import MatchHistoryTable from "./MatchHistoryTable";
+import TournamentDetails from "./TournamentDetails";
 
 export default function Bracket({
   tournament,
@@ -59,6 +60,7 @@ export default function Bracket({
           ) : (
             <span>TODO Swiss</span>
           )}
+          <TournamentDetails tournament={tournament} rounds={rounds} />
           <MatchHistoryTable rounds={rounds} />
         </div>
       </div>

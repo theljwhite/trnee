@@ -63,9 +63,15 @@ export const tournaments = {
     return tournaments;
   },
   getTournamentById: async (tourneyId) => {
-    const response = await fetch(`${tourneyBase}?id=${tourneyId}`);
-    const tournament = await response.json();
-    return tournament;
+    const tourneyResponse = await fetch(`${tourneyBase}?id=${tourneyId}`);
+    const [tournament] = await tourneyResponse.json();
+
+    const userResponse = await fetch(
+      `${base}/users?id=${tournament.creatorId}`
+    );
+    const [user] = await userResponse.json();
+
+    return { ...tournament, creatorUsername: user.username };
   },
   getTournamentParticipants: async (tourneyId) => {
     const response = await fetch(

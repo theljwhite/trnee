@@ -53,21 +53,24 @@ export default function Sidebar() {
         TRNEES
       </span>
 
-      {userTournies.slice(-3).map((tournament) => {
-        return (
-          <Link
-            key={tournament.id}
-            to={`/trnee/${tournament.id}`}
-            className="w-full cursor-pointer h-16 flex items-center justify-center hover:bg-zinc-700 transition ease-in-out duration-200"
-          >
-            <span className="rounded-lg bg-gray-800 w-10 h-10 p-0.5 flex items-center justify-center">
-              <span className="text-white">
-                <TourneyBracketIconOne color="currentColor" size={24} />
+      {userTournies
+        .slice(-3)
+        .sort((a, b) => b.id - a.id)
+        .map((tournament) => {
+          return (
+            <Link
+              key={tournament.id}
+              to={`/trnee/${tournament.id}`}
+              className="w-full cursor-pointer h-16 flex items-center justify-center hover:bg-zinc-700 transition ease-in-out duration-200"
+            >
+              <span className="rounded-lg bg-gray-800 w-10 h-10 p-0.5 flex items-center justify-center">
+                <span className="text-white">
+                  <TourneyBracketIconOne color="currentColor" size={24} />
+                </span>
               </span>
-            </span>
-          </Link>
-        );
-      })}
+            </Link>
+          );
+        })}
 
       <Link
         to={state.user ? "/create" : "/login"}

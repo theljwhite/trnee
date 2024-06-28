@@ -30,7 +30,7 @@ export default function Tournament() {
   }, [didTourneyUpdate]);
 
   const getAndSetTournament = async () => {
-    const [tourney] = await api.tournaments.getTournamentById(tourneyId);
+    const tourney = await api.tournaments.getTournamentById(tourneyId);
     const participants = await api.tournaments.getTournamentParticipants(
       tourneyId
     );

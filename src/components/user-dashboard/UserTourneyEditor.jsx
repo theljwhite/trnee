@@ -29,7 +29,7 @@ export default function UserTourneyEditor() {
   }, [tourneyId]);
 
   const getTournament = async () => {
-    const [tournament] = await api.tournaments.getTournamentById(tourneyId);
+    const tournament = await api.tournaments.getTournamentById(tourneyId);
     setTournament(tournament);
   };
 

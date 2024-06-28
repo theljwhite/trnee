@@ -284,10 +284,10 @@
     {
       "matchNumber": 3,
       "roundNumber": 1,
-      "status": "pending",
-      "participantOneScore": 0,
-      "participantTwoScore": 0,
-      "winnerId": null,
+      "status": "completed",
+      "participantOneScore": "2",
+      "participantTwoScore": "3",
+      "winnerId": 4,
       "participantOneId": 11,
       "participantTwoId": 4,
       "tournamentId": 15,
@@ -376,6 +376,18 @@
       "status": "pending",
       "winnerId": null,
       "id": 10
+    },
+    {
+      "tournamentId": 15,
+      "roundNumber": 2,
+      "matchNumber": 10,
+      "participantOneId": 4,
+      "participantTwoId": null,
+      "participantOneScore": 0,
+      "participantTwoScore": 0,
+      "status": "pending",
+      "winnerId": null,
+      "id": 11
     }
   ],
   "teams": [

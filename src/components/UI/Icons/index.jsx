@@ -559,3 +559,135 @@ export const EditPencil = ({ color, size }) => (
     ></path>
   </svg>
 );
+
+export const ShareIcon = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs></defs>
+    <title />
+    <g data-name="86.share" id="_86.share">
+      <circle
+        fill="none"
+        stroke={color ?? "currentColor"}
+        strokeLinejoin="round"
+        strokeWidth="2px"
+        strokeLinecap="round"
+        cx="7"
+        cy="12"
+        r="3"
+      />
+      <circle
+        fill="none"
+        stroke={color ?? "currentColor"}
+        strokeLinejoin="round"
+        strokeWidth="2px"
+        strokeLinecap="round"
+        cx="17"
+        cy="4"
+        r="3"
+      />
+      <circle
+        fill="none"
+        stroke={color ?? "currentColor"}
+        strokeLinejoin="round"
+        strokeWidth="2px"
+        strokeLinecap="round"
+        cx="17"
+        cy="20"
+        r="3"
+      />
+      <line
+        fill="none"
+        stroke={color ?? "currentColor"}
+        strokeLinejoin="round"
+        strokeWidth="2px"
+        x1="10"
+        x2="15"
+        y1="10"
+        y2="6"
+      />
+      <line
+        fill="none"
+        stroke={color ?? "currentColor"}
+        strokeLinejoin="round"
+        strokeWidth="2px"
+        x1="10"
+        x2="15"
+        y1="14"
+        y2="18"
+      />
+    </g>
+  </svg>
+);
+
+export const PrintIcon = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title />
+    <path
+      fill="none"
+      stroke={color ?? "currentColor"}
+      strokeLinejoin="round"
+      strokeWidth="32px"
+      d="M384,368h24a40.12,40.12,0,0,0,40-40V168a40.12,40.12,0,0,0-40-40H104a40.12,40.12,0,0,0-40,40V328a40.12,40.12,0,0,0,40,40h24"
+    />
+    <rect
+      fill="none"
+      stroke={color ?? "currentColor"}
+      strokeLinejoin="round"
+      strokeWidth="32px"
+      height="208"
+      rx="24.32"
+      ry="24.32"
+      width="256"
+      x="128"
+      y="240"
+    />
+    <path
+      fill="none"
+      stroke={color ?? "currentColor"}
+      strokeLinejoin="round"
+      strokeWidth="32px"
+      d="M384,128V104a40.12,40.12,0,0,0-40-40H168a40.12,40.12,0,0,0-40,40v24"
+    />
+    <circle cx="392" cy="184" r="24" />
+  </svg>
+);
+
+export const InfoIcon = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill={color ?? "currentColor"}
+    viewBox="0 0 20 20"
+  >
+    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+  </svg>
+);
+
+export const CodeBracketIcon = ({ color, size }) => (
+  <svg
+    width={size}
+    height={size}
+    fill={color ?? "currentColor"}
+    viewBox="0 0 96 96"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title />
+    <g>
+      <path d="M24.8452,25.3957a6.0129,6.0129,0,0,0-8.4487.7617L1.3974,44.1563a5.9844,5.9844,0,0,0,0,7.687L16.3965,69.8422a5.9983,5.9983,0,1,0,9.21-7.687L13.8068,48l11.8-14.1554A6,6,0,0,0,24.8452,25.3957Z" />
+      <path d="M55.1714,12.1192A6.0558,6.0558,0,0,0,48.1172,16.83L36.1179,76.8262A5.9847,5.9847,0,0,0,40.8286,83.88a5.7059,5.7059,0,0,0,1.1835.1172A5.9949,5.9949,0,0,0,47.8828,79.17L59.8821,19.1735A5.9848,5.9848,0,0,0,55.1714,12.1192Z" />
+      <path d="M94.6026,44.1563,79.6035,26.1574a5.9983,5.9983,0,1,0-9.21,7.687L82.1932,48l-11.8,14.1554a5.9983,5.9983,0,1,0,9.21,7.687L94.6026,51.8433A5.9844,5.9844,0,0,0,94.6026,44.1563Z" />
+    </g>
+  </svg>
+);
