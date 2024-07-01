@@ -1,4 +1,5 @@
 import { createRoundNames } from "../../utils/bracketLogic";
+import { TRANSLATE_COORD_REGEX } from "../../constants/regularExpressions";
 
 export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
   const lineStrokeColor = "#F0F0F0";
@@ -13,6 +14,15 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
 
   const roundNamesWidth = 244;
   const roundNamesHeight = 25;
+
+  const extraMatchTextOffset = 122;
+  const extraMatchRoundTransform = rounds[rounds.length - 1].transform;
+  const extraMatchRoundCoords = extraMatchRoundTransform.match(
+    TRANSLATE_COORD_REGEX
+  );
+  const extraMatchTextX =
+    Number(extraMatchRoundCoords[1]) + extraMatchTextOffset;
+  const extraMatchTextY = extraMatchRoundCoords[2];
 
   return (
     <svg id="bracket" width="1253" height="656" viewBox="0 0 1253 656">
@@ -31,9 +41,18 @@ export default function SingleElimBracket({ lines, rounds, openMatchModal }) {
             );
           })}
         </g>
-        <text x="854" y="548" textAnchor="middle" fill="#FFF">
-          3rd Place Match
-        </text>
+
+        {rounds.length % 2 === 0 && (
+          <text
+            x={extraMatchTextX}
+            y={extraMatchTextY}
+            textAnchor="middle"
+            fill="#FFF"
+          >
+            3rd Place Match
+          </text>
+        )}
+
         <g>
           {rounds.map((round, index) => {
             const pOne = round?.match?.participants?.find(

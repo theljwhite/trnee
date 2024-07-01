@@ -10,8 +10,9 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-//TODO - make options state
 //TODO - if manual entry, hide option for match reporting
+//TODO - can make the select options state, but for now it works fine
+//and still saves prior response
 
 export default function CreateSettings() {
   const { state, dispatch } = useCreateTourneyContext();
@@ -34,6 +35,27 @@ export default function CreateSettings() {
   ];
 
   const tourneyTypeOptions = ["Player based", "Team based"];
+
+  const tourneyTypeDefault =
+    state.isTeamBased === null
+      ? "Select a tournament type"
+      : state.isTeamBased
+      ? "Team Based"
+      : !state.isTeamBased && "Player Based";
+
+  const participantDefault =
+    state.hasCustomSignup === null
+      ? "Select a participants option"
+      : state.hasCustomSignup
+      ? participantsOptions[1]
+      : !state.hasCustomSignup && participantsOptions[0];
+
+  const participantUpdateDefault =
+    state.isParticipantUpdateAllowed === null
+      ? "Select a Match Reporting Option"
+      : state.isParticipantUpdateAllowed
+      ? matchReportOptions[0]
+      : !state.isParticipantUpdateAllowed && matchReportOptions[1];
 
   return (
     <div className="bg-zinc-900 rounded-lg p-5 shadow-lg min-w-[680px]">
@@ -85,8 +107,8 @@ export default function CreateSettings() {
             onChange={(e) =>
               dispatch({ type: "format_update", payload: e.target.value })
             }
-            defaultValue="Select a tournament format"
-            defaultValueTitle="Select a tournament format"
+            defaultValue={state.format ?? "Select a tournament format"}
+            defaultValueTitle={state.format ?? "Select a tournament format"}
             options={formatOptions}
             icon={<TourneyBracketIconOne size={18} color="#FFF" />}
             isDark
@@ -100,10 +122,10 @@ export default function CreateSettings() {
             onChange={(e) =>
               dispatch({ type: "type_update", payload: e.target.value })
             }
-            defaultValue="Select a tournament type"
-            defaultValueTitle="Select a tournament type"
+            defaultValueTitle={tourneyTypeDefault}
+            defaultValue={tourneyTypeDefault}
             options={tourneyTypeOptions}
-            icon={<UsersIcon size={18} color="#FFF" />}
+            icon={<TwoGearsIcon size={18} color="#FFF" />}
             isDark
           />
         </div>
@@ -115,10 +137,10 @@ export default function CreateSettings() {
             onChange={(e) =>
               dispatch({ type: "participant_update", payload: e.target.value })
             }
-            defaultValue="Select a participants option"
-            defaultValueTitle="Select a participants option"
+            defaultValue={participantDefault}
+            defaultValueTitle={participantDefault}
             options={participantsOptions}
-            icon={<TwoGearsIcon size={18} color="#FFF" />}
+            icon={<UsersIcon size={18} color="#FFF" />}
             isDark
           />
         </div>
@@ -130,8 +152,8 @@ export default function CreateSettings() {
             onChange={(e) =>
               dispatch({ type: "match_report_update", payload: e.target.value })
             }
-            defaultValue="Select a Match Reporting option"
-            defaultValueTitle="Select a Match Reporting option"
+            defaultValue={participantUpdateDefault}
+            defaultValueTitle={participantUpdateDefault}
             options={matchReportOptions}
             icon={<SubmitIcon size={18} color="#FFF" />}
             isDark

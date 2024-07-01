@@ -1,3 +1,5 @@
+import { allGameNames } from "../../constants/gameConstants";
+
 const startTimeRound = 1000 * 60 * 15;
 const currDate = new Date();
 const startTimeNextInterval = new Date(
@@ -8,7 +10,7 @@ export const createTourneyInitialState = {
   name: "",
   description: "",
   game: null,
-  format: "SingleElimination",
+  format: null,
   startTime: startTimeNextInterval,
   hasCustomSignup: null,
   isParticipantUpdateAllowed: null,

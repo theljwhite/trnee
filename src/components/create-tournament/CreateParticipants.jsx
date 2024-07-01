@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useCreateTourneyContext } from "./CreateTourneyContext";
-import { SEED_USER_ENTRY_REGEX } from "../../constants/regularExpressions";
 import StyledTextArea from "../UI/StyledTextArea";
 import { UsersIcon } from "../UI/Icons";
 import StyledCopyBox from "../UI/StyledCopyBox";
@@ -20,7 +19,7 @@ export default function CreateParticipants() {
         type: "signup_details_update",
         payload: {
           key: signupUuid,
-          url: `http://localhost:8088/join?invite=${signupUrlUuid}`,
+          url: `http://trn.ee/join?invite=${signupUrlUuid}`,
         },
       });
     }
@@ -50,11 +49,10 @@ export default function CreateParticipants() {
             </span>
           ) : (
             <span>
-              Manage participants for your tournament. Enter a list of
-              participants with their desired seed and their username or name.
-              Separate participants with a line break. Ex: &quot;1 johny 2 davis
-              3 skimbo&quot; One line would look like &quot;1 johny&quot; and
-              the next line would be &quot;2 davis&quot;
+              Enter a list of participants with their desired seed and their
+              username or name. Separate participants with a line break. Ex:
+              &quot;1 johny 2 davis 3 skimbo&quot; One line would look like
+              &quot;1 johny&quot; and the next line would be &quot;2 davis&quot;
             </span>
           )}
         </p>

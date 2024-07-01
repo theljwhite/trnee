@@ -50,8 +50,10 @@ export default function CreateGeneral() {
             onChange={(e) =>
               dispatch({ type: "game_update", payload: e.target.value })
             }
-            defaultValue="Select a game"
-            defaultValueTitle="Select a game for your tournament"
+            defaultValue={state.game ?? "Select a game"}
+            defaultValueTitle={
+              state.game ?? "Select a game for your tournament"
+            }
             options={["None", ...allGameNames]}
             icon={<GameControllerIcon size={18} color="#FFF" />}
             isDark
