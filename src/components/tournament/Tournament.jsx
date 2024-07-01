@@ -16,15 +16,19 @@ export default function Tournament() {
   const [rounds, setRounds] = useState([]);
   const [didTourneyUpdate, setDidTourneyUpdate] = useState(false);
 
+  const [completedMatches, setCompletedMatches] = useState([]);
+
   let { tourneyId } = useParams();
 
   useEffect(() => {
     getAndSetTournament(tourneyId);
+    getLatestCompletedMatches(tourneyId);
   }, []);
 
   useEffect(() => {
     if (didTourneyUpdate) {
       getAndSetTournament(tourneyId);
+      getLatestCompletedMatches(tourneyId);
       setDidTourneyUpdate(false);
     }
   }, [didTourneyUpdate]);
@@ -74,6 +78,15 @@ export default function Tournament() {
     setRounds(roundsWithMatchData);
   };
 
+  const getLatestCompletedMatches = async (tourneyId) => {
+    const numMatches = 4;
+    const latestCompletedMatches = await api.matches.getLatestCompleted(
+      tourneyId,
+      numMatches
+    );
+    setCompletedMatches(latestCompletedMatches);
+  };
+
   return (
     <>
       <TournamentHeader tournament={tournament} />
@@ -96,6 +109,7 @@ export default function Tournament() {
           lines={lines}
           rounds={rounds}
           setDidTourneyUpdate={setDidTourneyUpdate}
+          completedMatches={completedMatches}
         />
       )}
     </>

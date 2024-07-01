@@ -2,31 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GameControllerIcon, MaximizeIcon, MinimizeIcon } from "../UI/Icons";
 
-export default function MatchHistoryTable({ rounds }) {
+export default function MatchHistoryTable({ completedMatches }) {
   const [show, setShow] = useState(true);
-  const [matchHistory, setMatchHistory] = useState([]);
-
-  useEffect(() => {
-    getCompletedMatches();
-  }, []);
-
-  const getCompletedMatches = async () => {
-    const completedMatches = rounds
-      .filter((round) => round.match.status === "completed")
-      .sort((a, b) => b.match.matchNumber - a.match.matchNumber)
-      .map((round) => ({
-        ...round,
-        winner: round.match.participants.find(
-          (p) => p.id === round.match.winnerId
-        ).username,
-      }));
-
-    setMatchHistory(completedMatches);
-  };
 
   return (
     <>
-      {matchHistory.length > 0 && (
+      {completedMatches.length > 0 && (
         <div className="bg-zinc-800 text-zinc-300 w-[350px] rounded-tl-xl absolute bottom-0 right-0">
           <div className="p-4 mb-2">
             <div className="flex flex-row items-center justify-between">
@@ -46,32 +27,30 @@ export default function MatchHistoryTable({ rounds }) {
               } transition-all duration-300 overflow-hidden`}
             >
               <ol className={`mt-3 divide-y divide-zinc-700`}>
-                {matchHistory.slice(-5).map((item, index) => {
+                {completedMatches.map((match, index) => {
                   const winningScore =
-                    item.match.participantOneScore >
-                    item.match.participantTwoScore
-                      ? item.match.participantOneScore
-                      : item.match.participantTwoScore;
+                    match.participantOneScore > match.participantTwoScore
+                      ? match.participantOneScore
+                      : match.participantTwoScore;
 
                   const losingScore =
-                    item.match.participantOneScore <
-                    item.match.participantTwoScore
-                      ? item.match.participantOneScore
-                      : item.match.participantTwoScore;
+                    match.participantOneScore < match.participantTwoScore
+                      ? match.participantOneScore
+                      : match.participantTwoScore;
 
                   return (
                     <li key={index}>
                       <Link
-                        to={`/trnee/${item.match.tournamentId}/${item.match.id}`}
+                        to={`/trnee/${match.tournamentId}/${match.id}`}
                         className="items-center block p-3 sm:flex hover:bg-zinc-700"
                       >
                         <div>
                           <div className="text-sm font-normal text-zinc-400">
-                            <span class="font-medium text-white">
-                              {item.winner}
+                            <span className="font-medium text-white">
+                              {match.winner}
                             </span>{" "}
-                            won Match #{item.match.matchNumber} with a score of{" "}
-                            <span class="font-medium text-white">
+                            won Match #{match.matchNumber} with a score of{" "}
+                            <span className="font-medium text-white">
                               {winningScore} - {losingScore}
                             </span>{" "}
                           </div>

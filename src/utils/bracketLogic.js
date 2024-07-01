@@ -114,6 +114,7 @@ export const createDbMatches = async (matchesArr, tournamentId) => {
     ...match,
     participantOneId: match.participants[0].id,
     participantTwoId: match.participants[1].id,
+    completedAt: null,
     tournamentId,
   }));
 
@@ -191,6 +192,7 @@ export const advanceWinnerHandleNextMatch = async (match) => {
         participantTwoScore: 0,
         status: "pending",
         winnerId: null,
+        completedAt: null,
       }),
     });
     const newMatch = await newMatchRes.json();

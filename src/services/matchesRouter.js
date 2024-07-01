@@ -4,9 +4,8 @@ import {
   advanceWinnerHandleNextMatch,
 } from "../utils/bracketLogic";
 
-//TODO - logic for updating match can be simplified when I update the way scores are reported
-
-export const matchesBase = "http://localhost:8088/matches";
+const base = "http://localhost:8088";
+export const matchesBase = `${base}/matches`;
 const headers = {
   "Content-Type": "application/json",
 };
@@ -32,6 +31,39 @@ export const matches = {
     const matchesByStatus = await response.json();
     return matchesByStatus;
   },
+  getLatestCompleted: async (tournamentId, numMatches) => {
+    const matchesRes = await fetch(
+      `${matchesBase}?status=completed&tournamentId=${tournamentId}`
+    );
+    const participantsRes = await fetch(
+      `${base}/tournament_participants?tournamentId=${tournamentId}`
+    );
+    const matches = await matchesRes.json();
+    const participants = await participantsRes.json();
+
+    const latestCompletedMatches = matches
+      .map((match) => {
+        const pOne = participants.find((p) => p.id === match.participantOneId);
+        const pTwo = participants.find((p) => p.id === match.participantTwoId);
+        const winner = participants.find(
+          (p) => p.id === match.winnerId
+        ).username;
+
+        return {
+          ...match,
+          participants: [pOne, pTwo],
+          winner,
+        };
+      })
+      .sort(
+        (a, b) =>
+          new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime()
+      )
+      //.sort((a, b) => b.matchNumber - a.matchNumber)
+      .slice(0, numMatches);
+
+    return latestCompletedMatches;
+  },
   updateMatchFromCreator: async (match, scoreOne, scoreTwo) => {
     if (scoreOne && scoreTwo) {
       const updateData = {
@@ -40,6 +72,7 @@ export const matches = {
         status: "completed",
         winnerId:
           scoreOne > scoreTwo ? match.participantOneId : match.participantTwoId,
+        completedAt: new Date(),
       };
       const updateRes = await fetch(`${matchesBase}/${match.id}`, {
         method: "PATCH",

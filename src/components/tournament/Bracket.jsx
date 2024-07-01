@@ -10,6 +10,7 @@ export default function Bracket({
   lines,
   rounds,
   setDidTourneyUpdate,
+  completedMatches,
 }) {
   const [activeRound, setActiveRound] = useState({});
   const [isMatchDetailsOpen, setIsMatchDetailsOpen] = useState(false);
@@ -61,7 +62,7 @@ export default function Bracket({
             <span>TODO Swiss</span>
           )}
           <TournamentDetails tournament={tournament} rounds={rounds} />
-          <MatchHistoryTable rounds={rounds} />
+          <MatchHistoryTable completedMatches={completedMatches} />
         </div>
       </div>
     </>

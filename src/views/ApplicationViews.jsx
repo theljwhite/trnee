@@ -3,6 +3,7 @@ import { CreateTourneyProvider } from "../components/create-tournament/CreateTou
 import Authorized from "../auth/Authorized";
 import Navbar from "../components/UI/Navbar";
 import Sidebar from "../components/UI/Sidebar";
+import Footer from "../components/UI/Footer";
 import HomeHero from "../components/UI/HomeHero";
 import TournamentsLayout from "../layouts/TournamentsLayout";
 import TournamentLayout from "../layouts/TournamentLayout";
@@ -20,13 +21,17 @@ export default function ApplicationViews() {
       <Routes>
         <Route
           element={
-            <main className="my-12 lg:mt-16 lg:ml-16 flex-1 block">
-              <div className="flex min-h-screen flex-col">
-                <Sidebar />
-                <Navbar />
-                <Outlet />
-              </div>
-            </main>
+            <>
+              <main className="my-12 lg:mt-16 lg:ml-16 flex-1 block">
+                <div className="flex min-h-screen flex-col">
+                  <Sidebar />
+                  <Navbar />
+
+                  <Outlet />
+                </div>
+              </main>
+              <Footer />
+            </>
           }
         >
           <Route

@@ -18,7 +18,9 @@ export default function UserTourneyEditor() {
 
   const [actionStatus, setActionStatus] = useState("Idle");
   const [actionDisabled, setActionDisabled] = useState(true);
+
   const [confirmEntry, setConfirmEntry] = useState("");
+  const [didUpdate, setDidUpdate] = useState(false);
 
   const { state: session } = useSession();
   const navigate = useNavigate();
@@ -27,6 +29,10 @@ export default function UserTourneyEditor() {
   useEffect(() => {
     getTournament();
   }, [tourneyId]);
+
+  useEffect(() => {
+    if (didUpdate) getTournament();
+  }, [didUpdate]);
 
   const getTournament = async () => {
     const tournament = await api.tournaments.getTournamentById(tourneyId);
@@ -50,6 +56,7 @@ export default function UserTourneyEditor() {
 
     if (tourneyUpdate) {
       toastSuccess(`Updated your tournament, ${tournament.name}`);
+      setDidUpdate(true);
     }
   };
 
@@ -200,7 +207,10 @@ export default function UserTourneyEditor() {
               Delete this tournament. This action cannot be undone.
             </p>
             <button
-              onClick={() => setActionStatus("Delete")}
+              onClick={() => {
+                setActionStatus("Delete");
+                setActionDisabled(true);
+              }}
               className="mt-4 flex text-white items-center text-left px-4 py-2 rounded-lg bg-indigo-600"
             >
               Delete tournament
@@ -212,7 +222,10 @@ export default function UserTourneyEditor() {
             </h3>
             <p className="text-white">Reset bracket to the first round.</p>
             <button
-              onClick={() => setActionStatus("Reset")}
+              onClick={() => {
+                setActionStatus("Reset");
+                setActionDisabled(true);
+              }}
               className="mt-4 flex text-white items-center text-left px-4 py-2 rounded-lg bg-indigo-600"
             >
               Reset tournament

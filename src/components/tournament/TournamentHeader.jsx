@@ -31,7 +31,9 @@ export default function TournamentHeader({ tournament }) {
           </Link>
         )}
         <button
-          onClick={() => copyTextToClipboard(window.location.href)}
+          onClick={() =>
+            copyTextToClipboard(window.location.href, "Copied TRNEE link")
+          }
           className="flex items-center text-white justify-center bg-zinc-800 mr-2 px-4 py-2 rounded-lg cursor-pointer"
         >
           <span className="hidden xl:inline">Copy TRNEE Link</span>
