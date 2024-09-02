@@ -5,7 +5,7 @@ Allows users to create, update, and manage a customized tournament bracket. Alth
 # Screenshots
 
 Home:
-![Home](https://ibb.co/Vj8ryVS)
+![Home](https://i.ibb.co/98jzXnT/Home1.png)
 
 Tournament list:
 ![Tournament list](https://i.ibb.co/XYRND2P/Tournies1.png)
