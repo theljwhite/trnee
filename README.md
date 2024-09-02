@@ -5,28 +5,28 @@ Allows users to create, update, and manage a customized tournament bracket. Alth
 # Screenshots
 
 Home:
-![Home](https://i.ibb.co/98jzXnT/Home1.png)
+![Home](https://i.postimg.cc/PTpkCsgn/Home1.png)
 
 Tournament list:
-![Tournament list](https://i.ibb.co/XYRND2P/Tournies1.png)
+![Tournament list](https://i.postimg.cc/g2sgT2T0/Tournies1.png)
 
 Tournament bracket example:
-![Tournament example](https://i.ibb.co/dLsVjKY/Tourney1.png)
+![Tournament example](https://i.postimg.cc/kgqjsbwZ/Tourney1.png)
 
 Create tournament examples:
-![Create 1](https://i.ibb.co/61yy5p2/Create1.png)
+![Create 1](https://i.postimg.cc/Vvt7G9xy/Create1.png)
 
-![Create 2](https://i.ibb.co/Hx7wS0t/Create2.png)
+![Create 2](https://i.postimg.cc/k4BY8Pwg/Create2.png)
 
-![Create 3](https://i.ibb.co/5BCwFRg/Create3.png)
+![Create 3](https://i.postimg.cc/NG2PjY5N/Create3.png)
 
 User created tournaments:
-![User created tournaments](https://i.ibb.co/0y3mYqf/Account1.png)
+![User created tournaments](https://i.postimg.cc/s2n0vgYL/Account1.png)
 
 Manage tournament:
-![Manage tournament](https://i.ibb.co/xhjnDYk/Manage1.png)
+![Manage tournament](https://i.postimg.cc/dtMN7XCJ/Manage1.png)
 
 Misc:
 
-![Misc 1](https://i.ibb.co/5sVKtZx/Confirm1.png)
-![Misc 2](https://i.ibb.co/C865k50/Report1.png)
+![Misc 1](https://i.postimg.cc/rm3nNZYC/Confirm1.png)
+![Misc 2](https://i.postimg.cc/284cnwdh/Report1.png)
